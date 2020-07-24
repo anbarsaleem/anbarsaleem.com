@@ -5,66 +5,94 @@
         
         <title>Anbar Saleem</title>
         <link rel = "stylesheet" href = "style.css">
+        <script src = "script.js"> </script>
         
     </head>
     
     <body>
         
-        <aside class = "sidebar">
+        <header class = "navbar">
             
-            <div class = "container sidebar-sticky"> <!-- sticky means it will follow you down when you scroll past it -->
+            <div class = "container navbar-sticky"> <!-- sticky means it will follow you down when you scroll past it (not implemented yet)-->
                 
-                 <div class = "sidebar-desc
-                ">
+                 <div class = "navbar-desc">
 
-                    <a> <h1>Anbar Saleem</h1> </a> <!-- no associated home link yet-->
+                    <a href = "index.html"> <h1>Anbar Saleem</h1> </a>
 
                 </div>
 
                 <nav>
 
-                    <ul class = "sidebar-nav"> <!-- no associated links added to some a tags yet -->
+                    <div class = "navbar-buttons">
 
-                        <li>
+                        <button class = "button nav-button">
 
-                            <a>About Me</a>
+                            <a href = "#intro">About Me</a>
+                        
+                        </button>
 
-                        </li>
-
-                        <li>
+                        <button class = "button nav-button">
 
                             <a href = "https://github.com/anbarsaleem">Github</a>
 
-                        </li>
+                        </button>
 
-                        <li>
+                        <button class = "button nav-button">
 
-                            <a>Resume</a>
+                            <a href = "https://github.com/anbarsaleem/High-School-Resume/blob/master/anbar_hs_resume.md">Resume</a>
 
-                        </li>
+                        </button>
 
-                        <li>
+                        <button class = "button nav-button">
+                            
+                            <a href = "#contact">Contact</a>
+                        
+                        </button>
 
-                            <a>Contact</a>
-
-                        </li>
-
-                    </ul>
+                    </div>
 
                 </nav>
                 
             </div>
             
-        </aside>    
+        </header>    
 
-        <main class = "content">
+        <section class = "section intro" id="intro">
             
+            <div class = "container">
+
+                <h2>About Me</h2>
+
+                <div class = "content-left-aligned">
+
+                    <div class = "content">
+
+                        <img src = "anbar_suit_pic.jpg" alt = "Anbar Saleem" class = "profile-pic">
+
+                    </div>
+
+                </div>
+
+                <div class = "content-justified-aligned"> <!-- INSERT ABOUT ME INFO TEXT HERE -->
+
+
+
+                </div>
+
+            </div>
             
-            
-        </main>
-        
-        <script src = "script.js"> </script>
-        
+        </section>
+
+        <section class = "section contact-me" id="contact">
+
+            <div class = "container">
+
+                <h2>Contact</h2>
+
+            </div>
+
+        </section>
+
     </body>
     
 </html>
