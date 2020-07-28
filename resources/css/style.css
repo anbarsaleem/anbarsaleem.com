@@ -1,1 +1,13 @@
-/*empty so far*/
+/*NAVBAR*/
+
+.sticky {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #99ccff;
+    box-shadow: 0 2px 2px #a2a2a2;
+    z-index: 9999;
+
+}
