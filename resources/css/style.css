@@ -1,43 +1,42 @@
 /* Style the navbar */
+/* Navbar links */
+#navbar a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px;
+  text-decoration: none;
+}
 
-  /* Navbar links */
-  #navbar a {
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px;
-    text-decoration: none;
-  }
-  
-  /* The sticky class is added to the navbar with JS when it reaches its scroll position */
-  .sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-shadow: 0 2px 2px #efefef;
-    z-index: 9999;
-  }
-  
-  /* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
-  .sticky + .content {
-    padding-top: 60px;
-  }
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 2px 2px #efefef;
+  z-index: 9999;
+}
 
-  /*Button styling*/
-  .navbar-buttons {
-    border: none;
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    border-radius: 0;
-    font-family: 'Lato', 'Arial', sans-serif;
-    background-color: rgba(255, 255, 255, 0);
-    font-weight: 300;
-    font-size: 20px;
-  }
+/* Add some top padding to the page content to prevent sudden quick movement (as the navigation bar gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 60px;
+}
+
+/*Button styling*/
+.navbar-buttons {
+  border: none;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  border-radius: 0;
+  font-family: 'Lato', 'Arial', sans-serif;
+  background-color: rgba(255, 255, 255, 0);
+  font-weight: 300;
+  font-size: 20px;
+}
 
 /* Page content */
 html, 
@@ -49,5 +48,49 @@ body {
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
   letter-spacing: 1.05px;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: 300;
+}
+
+h2 {
+  font-size: 180%;
+  word-spacing: 2px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  letter-spacing: 1.1px;
+}
+
+h2:after {
+    display: block;
+    height: 2px;
+    background-color: #00001a;
+    content: " ";
+    width: 200px;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+
+/* About Me Section */
+.intro {
+
+}
+
+/* Projects Section */
+.projects {
+  
+}
+
+/* Contact Section */
+.contact-me {
+  background-color: #00001a;
+  color: #F8F8F8;
 }
   
