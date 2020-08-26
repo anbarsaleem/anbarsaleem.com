@@ -16,6 +16,8 @@
 
         <script src = "resources/js/navbar.js"></script>
         <script src = "resources/js/show-greeting-on-pic.js"></script>
+        <script src = "resources/js/projects-script.js"></script>
+
  
 
         <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
@@ -83,7 +85,9 @@
             
             <div class = "container">
 
-                <h2>About Me</h2>
+                <h2>About Me&nbsp;
+                    <i class="far fa-user-circle"></i>
+                </h2>
 
                 <div class = "columns is-mobile is-vcentered">
 
@@ -126,8 +130,95 @@
 
             <div class = "container">
 
-                <h2>Programming Projects</h2>
+                <h2>Programming Projects&nbsp;
+                    <i class = "fas fa-code"></i>
+                </h2>
                 
+            </div>
+
+            <div class = "columns is-mobile is-centered">
+
+                <div class = "column is-8 has-text-centered project_buttons">
+
+                    <button class = "button is-info is-inverted is-fullwidth" id = "proj_btn_1" onclick = "toggleProject(1)">Pokémon Saleem</button>
+
+                </div> 
+
+            </div>
+
+            <div class = "project_container" id = "project_button_1" style = "display: flex;">
+            
+                <figure class = "project">
+
+                    <div class = "project_content">
+
+                        <div class = "project_title">
+
+                            <h3 class = "project_heading">Pokémon Saleem</h3>
+
+                            <div class = "project_tag project_tag_java">JAVA</div>
+
+                        </div>
+
+                        <p class = "project_description">This text-based Pokémon battle simulator began as an AP Computer Science A project that I expanded on by adding an item use system and scoreboard so people can play to their heart's content and be forced to use actual strategy against the randomized computer opponent. It is loosely based off of the famous game, Pokemon Red, created by a branch of Nintendo, Game Freak, along with the Pokemon Company.</p>
+
+                        <div class = "project_details">
+
+                            <p class = "project_detail">
+
+                                <span class="emoji">💻</span>
+                                720 Lines
+
+                            </p>
+
+                            <p class = "project_detail">
+
+                                <a href = "https://github.com/anbarsaleem/Pokemon-Saleem" target = "_blank">GITHUB</a>
+                                
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class = "columns is-mobile is-centered">
+
+                        <div class = "column is-8 has-text-centered project_buttons">
+        
+                            <button class = "button is-info is-inverted is-fullwidth" id = "proj_btn_2" onclick = "toggleProject(2)">Personal Website</button>
+        
+                        </div> 
+        
+                    </div>
+        
+                    <div class = "project_container" id = "project_button_2" style = "display: flex;">
+                    
+                        <figure class = "project">
+        
+                            <div class = "project_content">
+        
+                                <div class = "project_title">
+        
+        
+        
+                                </div>
+        
+                                <p class = "project_description"></p>
+        
+                                <div class = "project_details">
+        
+                                    <p class = "project_detail"></p>
+        
+                                    <p class = "project_detail"></p>
+        
+                                    <p class = "project_detail"></p>
+        
+                                </div>
+        
+                            </div>
+
+                </figure>
+
             </div>
 
         </section>
