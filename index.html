@@ -1,282 +1,218 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-        
-        <title>Anbar Saleem</title>
-        <link rel="shortcut icon" href="resources/img/cropped_anbar_suit_pic.jpg" type="image/x-icon">
+
+<head>
+
+    <title>Anbar Saleem</title>
+    <link rel="shortcut icon" href="resources/img/cropped_anbar_suit_pic.jpg" type="image/x-icon">
 
 
-        <link rel = "stylesheet" href = "vendors/css/bulma.min.css"> <!-- BULMA -->
+    <link rel="stylesheet" href="vendors/css/bulma.min.css"> <!-- BULMA -->
 
-        <link rel = "stylesheet" href = "resources/css/style.css">
-        
-        <!-- JQuery script to define $ used in script.js -->
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="resources/css/style.css">
 
-        <script src = "resources/js/navbar.js"></script>
-        <script src = "resources/js/show-greeting-on-pic.js"></script>
-        <script src = "resources/js/projects-script.js"></script>
+    <!-- JQuery script to define $ used in script.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://kit.fontawesome.com/fde2c4189d.js" crossorigin="anonymous"></script>
 
- 
+    <script src="resources/js/navbar.js"></script>
+    <script src="resources/js/show-greeting-on-pic.js"></script>
+    <script src="resources/js/projects-script.js"></script>
 
-        <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
-        <script src="https://kit.fontawesome.com/fde2c4189d.js" crossorigin="anonymous"></script> <!-- FONT AWESOME ICONS -->
 
-        <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->        <!-- BOOTSTRAP CSS -->
-        
-    </head>
-    
-    <body>
-        
-        <header>
-            
-            <nav class = "navbar sticky" id = "navbar" role = "navigation" aria-label= "main navigation"> <!-- sticky means it will follow you down when you scroll past it (not implemented yet)-->
-                
-                 <div class = "navbar-brand">
 
-                    <div class = "navbar-item">
+    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+    <!-- FONT AWESOME ICONS -->
 
-                        <img src = "resources/img/cropped_anbar_suit_pic.jpg" width = 40 height = 40 class = "nav-pic">&nbsp;&nbsp;Anbar Saleem</img>
+    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <!-- BOOTSTRAP CSS -->
 
-                    </div>
+</head>
 
-                </div>
-                
-                <div class = "navbar-start navbar-item buttons">
+<body>
 
-                    <button class = "navbar-buttons button">
+    <header>
 
-                        <a href = "#intro">About Me</a>
-                    
-                    </button>
+        <nav class="navbar sticky" id="navbar" role="navigation" aria-label="main navigation">
+            <!-- sticky means it will follow you down when you scroll past it (not implemented yet)-->
 
-                    <button class = "navbar-buttons button">
+            <div class="navbar-brand">
 
-                        <a href = "https://github.com/anbarsaleem">Github</a>
+                <div class="navbar-item">
 
-                    </button>
-
-                    <button class = "navbar-buttons button">
-
-                        <a href = "#projects">Projects</a>
-
-                    </button>
-
-                    <button class = "navbar-buttons button">
-
-                        <a href = "https://github.com/anbarsaleem/High-School-Resume/blob/master/anbar_hs_resume.md">Resume</a>
-
-                    </button>
-
-                    <button class = "navbar-buttons button">
-                        
-                        <a href = "#contact">Contact</a>
-                    
-                    </button>
+                    <img src="resources/img/cropped_anbar_suit_pic.jpg" width=40 height=40
+                        class="nav-pic">&nbsp;&nbsp;Anbar Saleem</img>
 
                 </div>
-                
-            </nav>
-            
-        </header>    
 
-        <section class = "section intro" id = "intro">
-            
-            <div class = "container">
+            </div>
 
-                <h2>About Me&nbsp;
-                    <i class="far fa-user-circle"></i>
-                </h2>
+            <div class="navbar-start navbar-item buttons">
 
-                <div class = "columns is-mobile is-vcentered">
+                <button class="navbar-buttons button">
 
-                    <div class = "column is-3 has-text-left">
+                    <a href="#intro">About Me</a>
 
-                        <div class = "img-with-txt" id = "img-with-txt">
+                </button>
 
-                            <img src = "resources/img/anbar_suit_pic.jpg" alt = "Anbar Saleem" class = "profile-pic" id = "profile-pic">
+                <button class="navbar-buttons button">
 
-                            <div class = "overlay-txt" id = "txt">Hi there! It's me, Anbar.</div>
-                            
-                        </div>
+                    <a href="https://github.com/anbarsaleem">Github</a>
 
-                    </div>
+                </button>
 
-                    <div class = "column is-9 has-text-justified">
-                        
-                        <div class = "content">
+                <button class="navbar-buttons button">
 
-                            Hardworker, Tenor II Singer (Men's Choir and Shower), Lefty, and Super Mario Enthusiast
-                            <br>
+                    <a href="#projects">Projects</a>
 
-                            <br>
-                            I am currently a 12th grader at JFK Memorial HS with an appreciation and proficiency for <b>STEM</b> as seen with my involvement in my school's <b>FIRST Robotics Competition</b> Team, <b>Science Olympiad</b> Team, <b>Central Jersey Math League</b> Team, and <b>Computer Science</b> Club. Besides those extracurriculars, I also pursue different personal projects located on my <a href = "https://github.com/anbarsaleem">Github</a> profile, including this here website :) . The purpose of these endeavors is to help further my programming arsenal as well as being ways for me to spend my time in both a fun and productive manner.
-                            <br>
+                </button>
 
+                <button class="navbar-buttons button">
 
+                    <a
+                        href="https://github.com/anbarsaleem/High-School-Resume/blob/master/anbar_hs_resume.md">Resume</a>
 
-                        </div>
+                </button>
+
+                <button class="navbar-buttons button">
+
+                    <a href="#contact">Contact</a>
+
+                </button>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <section class="section intro" id="intro">
+
+        <div class="container">
+
+            <h2>About Me&nbsp;
+                <i class="far fa-user-circle"></i>
+            </h2>
+
+            <div class="columns is-mobile is-vcentered">
+
+                <div class="column is-3 has-text-left">
+
+                    <div class="img-with-txt" id="img-with-txt">
+
+                        <img src="resources/img/anbar_suit_pic.jpg" alt="Anbar Saleem" class="profile-pic"
+                            id="profile-pic">
+
+                        <div class="overlay-txt" id="txt">Hi there! It's me, Anbar.</div>
 
                     </div>
 
                 </div>
 
-            </div>
-            
-        </section>
+                <div class="column is-9 has-text-justified">
 
-        <section class = "section projects" id = "projects">
+                    <div class="content">
 
-            <div class = "container">
+                        Hardworker, Tenor II Singer (Men's Choir and Shower), Lefty, and Super Mario Enthusiast
+                        <br>
 
-                <h2>Programming Projects&nbsp;
-                    <i class = "fas fa-code"></i>
-                </h2>
-                
-            </div>
+                        <br>
+                        I am currently a 12th grader at JFK Memorial HS with an appreciation and proficiency for
+                        <b>STEM</b> as seen with my involvement in my school's <b>FIRST Robotics Competition</b> Team,
+                        <b>Science Olympiad</b> Team, <b>Central Jersey Math League</b> Team, and <b>Computer
+                            Science</b> Club. Besides those extracurriculars, I also pursue different personal projects
+                        located on my <a href="https://github.com/anbarsaleem">Github</a> profile, including this here
+                        website :) . The purpose of these endeavors is to help further my programming arsenal as well as
+                        being ways for me to spend my time in both a fun and productive manner.
+                        <br>
 
-            <div class = "columns is-mobile is-centered">
 
-                <div class = "column is-8 has-text-centered project_buttons">
-
-                    <button class = "button is-info is-inverted is-fullwidth" id = "proj_btn_1" onclick = "toggleProject(1)">Pokémon Saleem</button>
-
-                </div> 
-
-            </div>
-
-            <div class = "project_container" id = "project_button_1">
-            
-                <figure class = "project">
-
-                    <div class = "project_content">
-
-                        <div class = "project_title">
-
-                            <h3 class = "project_heading">Pokémon Saleem</h3>
-
-                            <div class = "project_tag project_tag_java">JAVA</div>
-
-                        </div>
-
-                        <p class = "project_description">This text-based Pokémon battle simulator began as an AP Computer Science A project that I expanded on by adding an item use system and scoreboard so people can play to their heart's content and be forced to use actual strategy against the randomized computer opponent. It is loosely based off of the famous game, Pokemon Red, created by a branch of Nintendo, Game Freak, along with the Pokemon Company.</p>
-
-                        <div class = "project_details">
-
-                            <p class = "project_detail">
-
-                                <span class="emoji">💻</span>
-                                720 Lines
-
-                            </p>
-
-                            <p class = "project_detail">
-
-                                <a href = "https://github.com/anbarsaleem/Pokemon-Saleem" target = "_blank">GITHUB</a>
-                                
-                            </p>
-
-                        </div>
 
                     </div>
-
-                </figure>
-
-            </div>
-
-            <div class = "columns is-mobile is-centered">
-
-                <div class = "column is-8 has-text-centered project_buttons">
-
-                    <button class = "button is-info is-inverted is-fullwidth" id = "proj_btn_2" onclick = "toggleProject(2)">Personal Site</button>
 
                 </div>
 
             </div>
 
-            <div class = "project_container" id = "project_button_2">
-            
-                <figure class = "project">
+        </div>
 
-                    <div class = "project_content">
+    </section>
 
-                        <div class = "project_title">
+    <section class="section projects" id="projects">
 
+        <div class="container">
 
+            <h2>Programming Projects&nbsp;
+                <i class="fas fa-code"></i>
+            </h2>
 
-                        </div>
-
-                        <p class = "project_description"></p>
-
-                        <div class = "project_details">
-
-                            <p class = "project_detail"></p>
-
-                            <p class = "project_detail"></p>
-
-                            <p class = "project_detail"></p>
-
-                        </div>
-
-                    </div>
-
-        </section>
-
-        <section class = "section contact-me" id = "contact">
-
-            <div class = "container">
-
-                <h2>Feel Free to Contact Me</h2>
-
-                <div class = "has-text-centered">
-
-                    <a class = "contact-link" href = "mailto:anbar.saleem@gmail.com" id = "contact-email" target = "_blank">
-
-                        <i class = "fas fa-envelope"></i>
-
-                    </a>
-
-                    &nbsp;
-
-                    <a class = "contact-link" href = "https://github.com/anbarsaleem" id = "contact-github" target = "_blank">
-                    
-                        <i class = "fab fa-github"></i>
-                    
-                    </a>
-
-                    &nbsp;
-
-                    <a class = "contact-link" href = "https://instagram.com/anbar_saleem" id = "contact-instagram" target = "_blank">
-                    
-                        <i class = "fab fa-instagram"></i>
-
-                    </a>
-
-                    &nbsp;
-
-                    <a class = "contact-link" href = "https://www.linkedin.com/in/anbar-saleem-8544aa199/" id = "contact-linkedin" target = "_blank">
-                    
-                        <i class = "fab fa-linkedin"></i>
-
-                    </a>
-
-                    &nbsp;
-
-                    <a class = "contact-link" href = "https://www.facebook.com/anbar.saleem.98/" id = "contact-facebook" target = "_blank">
-                    
-                        <i class = "fab fa-facebook"></i>
-                    
-                    </a>
-
-                    &nbsp;
-
+            <div class="columns is-mobile is-centered">
+                <div class="column is-8 has-text-centered" style="margin-bottom: 20px;">
+                    <p>Each button shows a project that is hosted on my Github profile. If you have any questions about any of them, please feel free to contact me. Click the buttons to toggle the projects displayed. :)</p>
                 </div>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section contact-me" id="contact">
+
+        <div class="container">
+
+            <h2>Feel Free to Contact Me</h2>
+
+            <div class="has-text-centered">
+
+                <a class="contact-link" href="mailto:anbar.saleem@gmail.com" id="contact-email" target="_blank">
+
+                    <i class="fas fa-envelope"></i>
+
+                </a>
+
+                &nbsp;
+
+                <a class="contact-link" href="https://github.com/anbarsaleem" id="contact-github" target="_blank">
+
+                    <i class="fab fa-github"></i>
+
+                </a>
+
+                &nbsp;
+
+                <a class="contact-link" href="https://instagram.com/anbar_saleem" id="contact-instagram"
+                    target="_blank">
+
+                    <i class="fab fa-instagram"></i>
+
+                </a>
+
+                &nbsp;
+
+                <a class="contact-link" href="https://www.linkedin.com/in/anbar-saleem-8544aa199/" id="contact-linkedin"
+                    target="_blank">
+
+                    <i class="fab fa-linkedin"></i>
+
+                </a>
+
+                &nbsp;
+
+                <a class="contact-link" href="https://www.facebook.com/anbar.saleem.98/" id="contact-facebook"
+                    target="_blank">
+
+                    <i class="fab fa-facebook"></i>
+
+                </a>
+
+                &nbsp;
 
             </div>
 
-        </section>
+        </div>
 
-    </body>
-    
+    </section>
+
+</body>
+
 </html>

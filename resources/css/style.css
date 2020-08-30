@@ -44,7 +44,7 @@
 /* --------- */
 /* MAIN TAGS */
 /* --------- */
-html, 
+html,
 body {
   color: #00001a;
   font-family: 'Lato', 'Arial', sans-serif;
@@ -62,7 +62,7 @@ h1,
 h2,
 h3,
 h4 {
-    font-weight: 300;
+  font-weight: 300;
 }
 
 h2 {
@@ -75,19 +75,19 @@ h2 {
 }
 
 h2:after {
-    display: block;
-    height: 2px;
-    background-color: #00001a;
-    content: " ";
-    width: 200px;
-    margin: 0 auto;
-    margin-top: 30px;
+  display: block;
+  height: 2px;
+  background-color: #00001a;
+  content: " ";
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 30px;
 }
 
 /* ---------------- */
 /* ABOUT ME SECTION */
 /* ---------------- */
-.intro{
+.intro {
   margin-top: 85px;
   background-color: #F8F8F8;
   color: #1E2A45;
@@ -138,6 +138,8 @@ h2:after {
 .project_buttons {
   margin-bottom: 20px;
   margin-top: 20px;
+  border: 1px solid #618985;
+  border-radius: 4px;
 }
 
 .project_container {
@@ -156,7 +158,7 @@ h2:after {
   max-width: 800px;
   border-radius: 4px;
   overflow: hidden;
-  box-shadow: 0 30px 80px 10px rgba(0,0,0,.2);
+  box-shadow: 0 10px 10px 5px rgba(0, 0, 0, .2);
 
   display: flex;
   align-items: stretch;
@@ -224,10 +226,21 @@ h2:after {
   margin-right: 5px;
 }
 
-.project_tag_java { 
-  background-color: #B07219; 
+.project_tag_java {
+  background-color: #B07219;
 }
 
+.project_tag_html {
+  background-color: #E34C26;
+}
+
+.project_tag_css {
+  background-color: #563D7C;
+}
+
+.project_tag_javascript {
+  background-color: #D8C84F;
+}
 
 /* --------------- */
 /* CONTACT SECTION */
@@ -236,4 +249,3 @@ h2:after {
   background-color: #00001a;
   color: #F8F8F8;
 }
-  
