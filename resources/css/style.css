@@ -250,6 +250,18 @@ h2:after {
   background-color: #306999;
 }
 
+.project_tag_vue {
+  background-color: #4FC08D;
+}
+
+.project_tag_swift {
+  background-color: #FFAC45;
+}
+
+.project_tag_ruby {
+  background-color: #CC342D;
+}
+
 /* --------------- */
 /* CONTACT SECTION */
 /* --------------- */
