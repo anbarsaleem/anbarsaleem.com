@@ -5,9 +5,7 @@ const FEATURED_REPOS = [
   "local-llm-stack",
   "homelab",
   "Fitbit2AppleHealth",
-  "AI-Course-Mentor-NJIT",
-  "watchparty-go",
-  "Pixabay-React-App"
+  "AI-Course-Mentor-NJIT"
 ];
 
 const REPO_OVERRIDES = {
@@ -15,8 +13,6 @@ const REPO_OVERRIDES = {
   "homelab": "Personal infrastructure lab on Proxmox VE with 8 Ansible playbooks for automated provisioning, a Go-based job scraping tool (JobScout), and Prometheus + Grafana observability via Tailscale.",
   "Fitbit2AppleHealth": "Full-stack iOS app for migrating Fitbit health data to Apple Health. Express.js backend with OAuth, Ionic/Vue frontend, and Swift HealthKit integration.",
   "AI-Course-Mentor-NJIT": "RAG-powered course recommendation assistant built with OpenAI API, Streamlit, and Docker. Deployed on DigitalOcean with multithreaded data scraping pipelines.",
-  "watchparty-go": "Real-time video synchronization application built in Go for synchronized media playback across clients.",
-  "Pixabay-React-App": "Image gallery application built with React, TypeScript, and Tailwind CSS, powered by the Pixabay API."
 };
 
 const TAG_COLORS = {
