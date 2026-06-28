@@ -1,218 +1,283 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anbar Saleem | Software Engineer</title>
+    <meta name="description" content="Anbar Saleem - Software Engineer specializing in infrastructure engineering, AI/ML applications, and distributed systems. Georgia Tech M.S. CS candidate.">
 
-    <title>Anbar Saleem</title>
+    <meta property="og:title" content="Anbar Saleem | Software Engineer">
+    <meta property="og:description" content="Software Engineer specializing in infrastructure engineering, AI/ML applications, and distributed systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anbarsaleem.com">
+    <meta property="og:image" content="https://anbarsaleem.com/resources/img/cropped_anbar_new_suit_pic.png">
+
     <link rel="shortcut icon" href="resources/img/cropped_anbar_new_suit_pic.png" type="image/x-icon">
 
-
-    <link rel="stylesheet" href="vendors/css/bulma.min.css"> <!-- BULMA -->
-
+    <link rel="stylesheet" href="vendors/css/bulma.min.css">
     <link rel="stylesheet" href="resources/css/style.css">
 
-    <!-- JQuery script to define $ used in script.js -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://kit.fontawesome.com/fde2c4189d.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <script src="resources/js/navbar.js"></script>
-    <script src="resources/js/show-greeting-on-pic.js"></script>
-    <script src="resources/js/projects-script.js"></script>
-
-
-
-    <link href='https://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
-    <!-- FONT AWESOME ICONS -->
-
-    <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-    <!-- BOOTSTRAP CSS -->
-
+    <script src="https://kit.fontawesome.com/fde2c4189d.js" crossorigin="anonymous" defer></script>
 </head>
 
 <body>
 
     <header>
-
-        <nav class="navbar sticky" id="navbar" role="navigation" aria-label="main navigation">
-            <!-- sticky means it will follow you down when you scroll past it (not implemented yet)-->
-
+        <nav class="navbar is-fixed-top" id="navbar" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
+                <a class="navbar-item" href="#about">
+                    <img src="resources/img/cropped_anbar_new_suit_pic.png" width="40" height="40"
+                        class="nav-pic">&nbsp;&nbsp;Anbar Saleem
+                </a>
 
-                <div class="navbar-item">
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
 
-                    <img src="resources/img/cropped_anbar_new_suit_pic.png" width=40 height=40
-                        class="nav-pic">&nbsp;&nbsp;Anbar Saleem</img>
-
+            <div id="navMenu" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="#about">About</a>
+                    <a class="navbar-item" href="#experience">Experience</a>
+                    <a class="navbar-item" href="#skills">Skills</a>
+                    <a class="navbar-item" href="#projects">Projects</a>
+                    <a class="navbar-item" href="#education">Education</a>
+                    <a class="navbar-item" href="resources/Anbar_Saleem_resume.pdf" target="_blank">Resume</a>
+                    <a class="navbar-item" href="#contact">Contact</a>
                 </div>
-
             </div>
-
-            <div class="navbar-start navbar-item buttons">
-
-                <button class="navbar-buttons button">
-
-                    <a href="#intro">About Me</a>
-
-                </button>
-
-                <button class="navbar-buttons button">
-
-                    <a href="https://github.com/anbarsaleem">Github</a>
-
-                </button>
-
-                <button class="navbar-buttons button">
-
-                    <a href="#projects">Projects</a>
-
-                </button>
-
-                <button class="navbar-buttons button">
-
-                    <a
-                        href="resources/Anbar_Saleem_resume.pdf">Resume</a>
-
-                </button>
-
-                <button class="navbar-buttons button">
-
-                    <a href="#contact">Contact</a>
-
-                </button>
-
-            </div>
-
         </nav>
-
     </header>
 
-    <section class="section intro" id="intro">
-
+    <!-- ABOUT ME -->
+    <section class="section intro" id="about">
         <div class="container">
+            <div class="columns is-vcentered">
 
-            <h2>About Me&nbsp;
-                <i class="far fa-user-circle"></i>
-            </h2>
-
-            <div class="columns is-mobile is-vcentered">
-
-                <div class="column is-3 has-text-left">
-
+                <div class="column is-4 has-text-centered">
                     <div class="img-with-txt" id="img-with-txt">
-
                         <img src="resources/img/anbar_new_suit_pic.png" alt="Anbar Saleem" class="profile-pic"
-                            id="profile-pic">
-
+                            id="profile-pic" width="300" height="300">
                         <div class="overlay-txt" id="txt">Hi there! It's me, Anbar.</div>
-
                     </div>
-
                 </div>
 
-                <div class="column is-9 has-text-justified">
-
-                    <div class="content">
-
-                        Hardworker, Tenor II Singer (Men's Choir and Shower), Lefty, and Super Mario Enthusiast
-                        <br>
-
-                        <br>
-                        I am currently a Software Engineer at AT&T and alumni from <b>New Jersey Institute of Technology's Albert Dorman Honors College</b>
-                        with a Bachelor's Degree in <b>Computer Science</b>. Outside of my work and prior degree pursuing, I also pursue different personal projects
-                        located on my <a href="https://github.com/anbarsaleem">Github</a> profile, including this here
-                        website :) . The purpose of these endeavors is to help further strengthen my programming arsenal as well as
-                        be ways for me to spend my time in both a fun and productive manner.
-                        <br>
-
-
-
+                <div class="column is-8">
+                    <div class="content about-text">
+                        <h1 class="about-name">Anbar Saleem</h1>
+                        <h2 class="about-subtitle">Software Engineer | Infrastructure & AI/ML</h2>
+                        <p>
+                            I'm a Software Engineer at AT&T, where I build infrastructure automation and
+                            platform tooling. I'm also pursuing my M.S. in Computer Science (Computing Systems)
+                            at Georgia Tech. My work sits at the intersection of low-level systems and
+                            intelligent applications: I've built VM validation tools that process 300+ production
+                            servers, self-hosted LLM inference stacks on consumer GPUs, and AI compliance agents
+                            at a startup. Before that, I shipped GenAI developer tools at Genmab.
+                        </p>
+                        <p class="personality-line">
+                            Also a Tenor II singer, lefty, and Super Mario enthusiast.
+                        </p>
                     </div>
-
                 </div>
 
             </div>
-
         </div>
-
     </section>
 
-    <section class="section projects" id="projects">
-
+    <!-- EXPERIENCE -->
+    <section class="section experience-section" id="experience">
         <div class="container">
+            <h2 class="section-heading">Experience&nbsp;
+                <i class="fas fa-briefcase"></i>
+            </h2>
 
-            <h2>Programming Projects&nbsp;
+            <div class="timeline">
+
+                <div class="timeline-entry">
+                    <div class="timeline-header">
+                        <h3 class="role-title">Software Engineer (Technology Development Program)</h3>
+                        <span class="company-info">AT&T &middot; Middletown, NJ &middot; July 2025 &ndash; Present</span>
+                    </div>
+                    <ul class="role-bullets">
+                        <li>Built a libvirt Python validation tool to automatically extract hardware and network configurations across 300+ production VMs, reducing disaster recovery diagnostics from 2 hours to under 10 minutes</li>
+                        <li>Developed a Redfish API hardware profiling tool for automated bare-metal server management and telemetry collection</li>
+                        <li>Engineered a zero-touch VPN deployment pipeline using MDM to provision iOS IKEv2 (strongSwan) profiles, cutting manual onboarding time by 70%</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="timeline-header">
+                        <h3 class="role-title">Startup Software Engineer</h3>
+                        <span class="company-info">Artemis Ops &middot; Remote &middot; Oct 2024 &ndash; June 2025</span>
+                    </div>
+                    <ul class="role-bullets">
+                        <li>Developed an AI-driven compliance agent in TypeScript that interprets natural language workplace events to auto-populate regulatory forms in DynamoDB</li>
+                        <li>Refactored React + Redux frontend SaaS architecture, reducing codebase bloat by 300+ lines and improving maintainability</li>
+                    </ul>
+                </div>
+
+                <div class="timeline-entry">
+                    <div class="timeline-header">
+                        <h3 class="role-title">Software Engineer</h3>
+                        <span class="company-info">Genmab &middot; Princeton, NJ &middot; June &ndash; Sep 2024</span>
+                    </div>
+                    <ul class="role-bullets">
+                        <li>Built and deployed Generative AI developer tools using Python, Streamlit, Docker, and AWS Lightsail for RAG, enhancing access to 50+ proprietary publications and accelerating onboarding efficiency by 60%</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS & TECHNOLOGIES -->
+    <section class="section skills-section" id="skills">
+        <div class="container">
+            <h2 class="section-heading">Skills & Technologies&nbsp;
+                <i class="fas fa-tools"></i>
+            </h2>
+
+            <div class="columns is-multiline is-centered">
+
+                <div class="column is-3-desktop is-6-tablet is-12-mobile">
+                    <h4 class="skills-category">Languages</h4>
+                    <div class="skills-group">
+                        <span class="tag is-medium skill-tag">Go</span>
+                        <span class="tag is-medium skill-tag">TypeScript</span>
+                        <span class="tag is-medium skill-tag">JavaScript</span>
+                        <span class="tag is-medium skill-tag">Python</span>
+                        <span class="tag is-medium skill-tag">C</span>
+                        <span class="tag is-medium skill-tag">C++</span>
+                        <span class="tag is-medium skill-tag">Java</span>
+                        <span class="tag is-medium skill-tag">Bash</span>
+                        <span class="tag is-medium skill-tag">SQL</span>
+                    </div>
+                </div>
+
+                <div class="column is-3-desktop is-6-tablet is-12-mobile">
+                    <h4 class="skills-category">Infrastructure & DevOps</h4>
+                    <div class="skills-group">
+                        <span class="tag is-medium skill-tag">Docker</span>
+                        <span class="tag is-medium skill-tag">Kubernetes</span>
+                        <span class="tag is-medium skill-tag">Ansible</span>
+                        <span class="tag is-medium skill-tag">Terraform</span>
+                        <span class="tag is-medium skill-tag">Proxmox</span>
+                        <span class="tag is-medium skill-tag">AWS</span>
+                        <span class="tag is-medium skill-tag">Azure</span>
+                    </div>
+                </div>
+
+                <div class="column is-3-desktop is-6-tablet is-12-mobile">
+                    <h4 class="skills-category">Observability</h4>
+                    <div class="skills-group">
+                        <span class="tag is-medium skill-tag">Prometheus</span>
+                        <span class="tag is-medium skill-tag">Grafana</span>
+                        <span class="tag is-medium skill-tag">GitHub Actions</span>
+                    </div>
+                </div>
+
+                <div class="column is-3-desktop is-6-tablet is-12-mobile">
+                    <h4 class="skills-category">Frameworks & Tools</h4>
+                    <div class="skills-group">
+                        <span class="tag is-medium skill-tag">React</span>
+                        <span class="tag is-medium skill-tag">Node.js</span>
+                        <span class="tag is-medium skill-tag">gRPC</span>
+                        <span class="tag is-medium skill-tag">Streamlit</span>
+                        <span class="tag is-medium skill-tag">Linux/Unix</span>
+                        <span class="tag is-medium skill-tag">Git</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="section projects-section" id="projects">
+        <div class="container">
+            <h2 class="section-heading">Projects&nbsp;
                 <i class="fas fa-code"></i>
             </h2>
 
-            <div class="columns is-mobile is-centered">
-                <div class="column is-8 has-text-centered" style="margin-bottom: 20px;">
-                    <p>Each button shows a project that is hosted on my Github profile. If you have any questions about any of them, please feel free to contact me. Click the buttons to toggle the projects displayed. :)</p>
+            <div id="projects-grid" class="columns is-multiline is-centered">
+                <div class="column is-12 has-text-centered">
+                    <p class="loading-text">Loading projects...</p>
                 </div>
             </div>
-
         </div>
-
     </section>
 
-    <section class="section contact-me" id="contact">
-
+    <!-- EDUCATION -->
+    <section class="section education-section" id="education">
         <div class="container">
+            <h2 class="section-heading">Education&nbsp;
+                <i class="fas fa-graduation-cap"></i>
+            </h2>
 
-            <h2>Feel Free to Contact Me</h2>
+            <div class="columns is-centered">
 
-            <div class = "columns is-mobile is-centered" style="margin-top: 250px;">
+                <div class="column is-5">
+                    <div class="edu-card">
+                        <h3 class="edu-school">Georgia Institute of Technology</h3>
+                        <p class="edu-degree">M.S. in Computer Science</p>
+                        <p class="edu-track">Computing Systems Track</p>
+                        <p class="edu-date">Jan 2026 &ndash; Present</p>
+                    </div>
+                </div>
 
-                <div class="column is-8 has-text-centered">
-
-                    <ul>
-
-                        <li>
-                            <a class="contact-link" href="mailto:anbar.saleem@gmail.com" id="contact-email" target="_blank">
-                                <i class="fas fa-envelope" aria-hidden="true"></i>
-                                <span> - Email</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="contact-link" href="https://github.com/anbarsaleem" id="contact-github" target="_blank">
-                                <i class="fab fa-github" aria-hidden="true"></i>
-                                <span> - Github</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="contact-link" href="https://instagram.com/anbar_saleem" id="contact-instagram"
-                                target="_blank">
-                                <i class="fab fa-instagram" aria-hidden="true"></i>
-                                <span> - Instagram</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="contact-link" href="https://www.linkedin.com/in/anbarsaleem/" id="contact-linkedin"
-                                target="_blank">
-                                <i class="fab fa-linkedin" aria-hidden="true"></i>
-                                <span> - Linkedin</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a class="contact-link" href="https://www.facebook.com/anbar.saleem.98/" id="contact-facebook"
-                                target="_blank">
-                                <i class="fab fa-facebook" aria-hidden="true"></i>
-                                <span> - Facebook</span>
-                            </a>
-                        </li>
-
-                    </ul>
-
+                <div class="column is-5">
+                    <div class="edu-card">
+                        <h3 class="edu-school">New Jersey Institute of Technology</h3>
+                        <p class="edu-degree">B.S. Honors in Computer Science</p>
+                        <p class="edu-track">Albert Dorman Honors College &middot; GPA: 3.83/4.0</p>
+                        <p class="edu-date">Sep 2021 &ndash; May 2025</p>
+                        <p class="edu-awards">Dean's List</p>
+                    </div>
                 </div>
 
             </div>
-
         </div>
-
     </section>
+
+    <!-- CONTACT -->
+    <section class="section contact-me" id="contact">
+        <div class="container">
+            <h2 class="section-heading contact-heading">Feel Free to Contact Me</h2>
+
+            <div class="contact-links-wrapper">
+                <ul class="contact-links">
+                    <li>
+                        <a class="contact-link" href="mailto:anbar.saleem@gmail.com" target="_blank">
+                            <i class="fas fa-envelope" aria-hidden="true"></i>
+                            <span> - Email</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="contact-link" href="https://github.com/anbarsaleem" target="_blank">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                            <span> - Github</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="contact-link" href="https://www.linkedin.com/in/anbarsaleem/" target="_blank">
+                            <i class="fab fa-linkedin" aria-hidden="true"></i>
+                            <span> - LinkedIn</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script src="resources/js/projects-script.js" defer></script>
+    <script src="resources/js/main.js" defer></script>
 
 </body>
 
