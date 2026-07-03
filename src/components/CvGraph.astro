@@ -266,19 +266,9 @@
       .attr("pointer-events", "none")
       .style("display", "none");
 
-    // --- Hover interactions ---
-    nodes.on("mouseover", function (event, d) {
-      d3.select(this).attr("stroke", "#00001a").attr("stroke-width", 2.5);
+    let pinnedNode: GraphNode | null = null;
 
-      const hasLabel = labelNodes.some((n) => n.id === d.id);
-      if (!hasLabel) {
-        hoverLabel
-          .text(d.label)
-          .attr("x", d.x!)
-          .attr("y", d.y! - nodeRadius(d) - 5)
-          .style("display", null);
-      }
-
+    function getConnected(d: GraphNode): Set<string> {
       const connected = new Set<string>();
       data.edges.forEach((e) => {
         const s =
@@ -292,10 +282,23 @@
         if (s === d.id) connected.add(t as string);
         if (t === d.id) connected.add(s as string);
       });
+      return connected;
+    }
 
-      nodes.attr("opacity", (n) =>
-        n.id === d.id || connected.has(n.id) ? 1 : 0.15
-      );
+    function highlightNode(d: GraphNode) {
+      const connected = getConnected(d);
+
+      nodes
+        .attr("opacity", (n) =>
+          n.id === d.id || connected.has(n.id) ? 1 : 0.15
+        )
+        .attr("stroke", (n) =>
+          n.id === d.id ? "#00001a" : "#fff"
+        )
+        .attr("stroke-width", (n) =>
+          n.id === d.id ? 2.5 : 1.5
+        );
+
       links.attr("stroke-opacity", (l) => {
         const s =
           typeof l.source === "object"
@@ -318,10 +321,13 @@
             : l.target;
         return s === d.id || t === d.id ? TYPE_COLORS[d.type] : "#ccc";
       });
+
       labels.attr("opacity", (n) =>
         n.id === d.id || connected.has(n.id) ? 1 : 0.1
       );
+    }
 
+    function buildTooltip(d: GraphNode): string {
       const exps = getNodeExperiences(d);
       const expBadges = exps
         .map(
@@ -338,22 +344,99 @@
       if (d.metrics && d.metrics.length)
         detail += `<br/>${d.metrics.slice(0, 2).join("<br/>")}`;
       detail += `<br/><span class="tt-conn">${d.connectionCount} connections</span>`;
+      return detail;
+    }
 
-      tooltipEl.innerHTML = detail;
-      tooltipEl.style.display = "block";
-
+    function positionTooltip(event: MouseEvent) {
       const wrapperRect = wrapper.getBoundingClientRect();
-      const x = event.clientX - wrapperRect.left + 16;
-      const y = event.clientY - wrapperRect.top - 10;
+      const cursorX = event.clientX - wrapperRect.left;
+      const cursorY = event.clientY - wrapperRect.top;
+      const ttWidth = tooltipEl.offsetWidth;
+      const ttHeight = tooltipEl.offsetHeight;
+
+      let x = cursorX + 16;
+      let y = cursorY - 10;
+
+      if (x + ttWidth > wrapperRect.width - 8) {
+        x = cursorX - ttWidth - 16;
+      }
+      if (y + ttHeight > wrapperRect.height - 8) {
+        y = wrapperRect.height - ttHeight - 8;
+      }
+      if (y < 8) y = 8;
+      if (x < 8) x = 8;
+
       tooltipEl.style.left = `${x}px`;
       tooltipEl.style.top = `${y}px`;
+    }
+
+    // --- Hover interactions ---
+    nodes.on("mouseover", function (event, d) {
+      if (pinnedNode) return;
+
+      highlightNode(d);
+
+      const hasLabel = labelNodes.some((n) => n.id === d.id);
+      if (!hasLabel) {
+        hoverLabel
+          .text(d.label)
+          .attr("x", d.x!)
+          .attr("y", d.y! - nodeRadius(d) - 5)
+          .style("display", null);
+      }
+
+      tooltipEl.innerHTML = buildTooltip(d);
+      tooltipEl.style.display = "block";
+      positionTooltip(event);
+    });
+
+    nodes.on("mousemove", function (event) {
+      if (pinnedNode) return;
+      positionTooltip(event);
     });
 
     nodes.on("mouseout", function () {
+      if (pinnedNode) return;
       d3.select(this).attr("stroke", "#fff").attr("stroke-width", 1.5);
       hoverLabel.style("display", "none");
       applyFilters();
       tooltipEl.style.display = "none";
+    });
+
+    // --- Click to pin/unpin highlight ---
+    nodes.on("click", function (event, d) {
+      event.stopPropagation();
+      if (pinnedNode && pinnedNode.id === d.id) {
+        pinnedNode = null;
+        hoverLabel.style("display", "none");
+        tooltipEl.style.display = "none";
+        applyFilters();
+        return;
+      }
+      pinnedNode = d;
+      highlightNode(d);
+
+      const hasLabel = labelNodes.some((n) => n.id === d.id);
+      if (!hasLabel) {
+        hoverLabel
+          .text(d.label)
+          .attr("x", d.x!)
+          .attr("y", d.y! - nodeRadius(d) - 5)
+          .style("display", null);
+      }
+
+      tooltipEl.innerHTML = buildTooltip(d);
+      tooltipEl.style.display = "block";
+      positionTooltip(event);
+    });
+
+    svg.on("click", function () {
+      if (pinnedNode) {
+        pinnedNode = null;
+        hoverLabel.style("display", "none");
+        tooltipEl.style.display = "none";
+        applyFilters();
+      }
     });
 
     // --- Filtering ---
@@ -418,10 +501,20 @@
 
       nodes.attr("cx", (d) => d.x!).attr("cy", (d) => d.y!);
       labels.attr("x", (d) => d.x!).attr("y", (d) => d.y!);
+
+      if (pinnedNode) {
+        hoverLabel
+          .attr("x", pinnedNode.x!)
+          .attr("y", pinnedNode.y! - nodeRadius(pinnedNode) - 5);
+      }
     });
 
     // --- Reset view ---
     document.getElementById("reset-view")!.addEventListener("click", () => {
+      pinnedNode = null;
+      hoverLabel.style("display", "none");
+      tooltipEl.style.display = "none";
+      applyFilters();
       svg.transition().duration(500).call(zoom.transform, d3.zoomIdentity);
     });
 

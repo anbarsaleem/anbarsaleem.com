@@ -37,20 +37,42 @@
     Nix: "#7e7eff",
   };
 
+  const USERNAME = "anbarsaleem";
+
   async function loadProjects() {
     const list = document.getElementById("projects-list")!;
     try {
       const res = await fetch(
-        "https://api.github.com/users/anbarsaleem/repos?type=all&sort=pushed&direction=desc&per_page=30"
+        `https://api.github.com/users/${USERNAME}/repos?type=all&sort=pushed&direction=desc&per_page=50`
       );
       const repos = await res.json();
       const publicRepos = repos.filter(
-        (r: any) => !r.fork && !r.private && r.description
+        (r: any) => !r.private && r.description
       );
+
+      const contributorChecks = await Promise.all(
+        publicRepos.map(async (repo: any) => {
+          try {
+            const contribRes = await fetch(
+              `https://api.github.com/repos/${USERNAME}/${repo.name}/contributors?per_page=30`
+            );
+            const contribs = await contribRes.json();
+            const isContrib =
+              Array.isArray(contribs) &&
+              contribs.some(
+                (c: any) => c.login?.toLowerCase() === USERNAME
+              );
+            return isContrib ? repo : null;
+          } catch {
+            return null;
+          }
+        })
+      );
+      const filtered = contributorChecks.filter(Boolean);
 
       list.innerHTML = "";
 
-      for (const repo of publicRepos) {
+      for (const repo of filtered) {
         const langRes = await fetch(repo.languages_url);
         const languages = await langRes.json();
         const langNames = Object.keys(languages);
