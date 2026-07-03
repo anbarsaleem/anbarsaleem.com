@@ -1,0 +1,631 @@
+---
+
+---
+
+<section class="cv-graph" id="cv-graph">
+  <div class="cv-graph-container">
+    <h2>Skills Graph</h2>
+    <p class="graph-intro">
+      An interactive map of my skills, projects, and roles — all pulled from my
+      <a
+        href="https://github.com/anbarsaleem/cv-graph"
+        target="_blank"
+        rel="noopener noreferrer">CV Knowledge Graph</a
+      >. Drag to rearrange, scroll to zoom, and hover for details.
+    </p>
+    <div class="controls">
+      <div class="legend">
+        <span class="legend-item"><i class="dot skill"></i>Skill</span>
+        <span class="legend-item"><i class="dot project"></i>Project</span>
+        <span class="legend-item"><i class="dot role"></i>Role</span>
+        <span class="legend-item"><i class="dot education"></i>Education</span>
+      </div>
+      <div class="filters" id="graph-filters">
+        <span class="filter-label">Filter by experience:</span>
+        <button class="filter-btn active" data-filter="professional">
+          <i class="filter-dot professional"></i>Professional
+        </button>
+        <button class="filter-btn active" data-filter="internship">
+          <i class="filter-dot internship"></i>Internship
+        </button>
+        <button class="filter-btn active" data-filter="academic">
+          <i class="filter-dot academic"></i>Academic
+        </button>
+        <button class="filter-btn active" data-filter="personal">
+          <i class="filter-dot personal"></i>Personal
+        </button>
+      </div>
+    </div>
+    <div class="graph-wrapper" id="graph-wrapper">
+      <p class="loading" id="graph-loading">Loading graph...</p>
+    </div>
+    <div class="tooltip" id="graph-tooltip"></div>
+  </div>
+</section>
+
+<script>
+  import * as d3 from "d3";
+
+  interface GraphNode extends d3.SimulationNodeDatum {
+    id: string;
+    label: string;
+    type: string;
+    proficiency?: string;
+    category?: string;
+    company?: string;
+    dates?: string;
+    metrics?: string[];
+    status?: string;
+    experience?: string | string[];
+    connectionCount?: number;
+  }
+
+  interface GraphEdge {
+    source: string | GraphNode;
+    target: string | GraphNode;
+  }
+
+  interface GraphData {
+    nodes: GraphNode[];
+    edges: GraphEdge[];
+  }
+
+  const TYPE_COLORS: Record<string, string> = {
+    skill: "#4A90D9",
+    project: "#50B86C",
+    role: "#E8853D",
+    education: "#9B6DC6",
+  };
+
+  const EXP_COLORS: Record<string, string> = {
+    professional: "#2563EB",
+    internship: "#D97706",
+    academic: "#7C3AED",
+    personal: "#059669",
+  };
+
+  const EXP_LABELS: Record<string, string> = {
+    professional: "Professional",
+    internship: "Internship",
+    academic: "Academic",
+    personal: "Personal",
+  };
+
+  const PROFICIENCY_OPACITY: Record<string, number> = {
+    expert: 1.0,
+    advanced: 0.85,
+    intermediate: 0.7,
+    learning: 0.55,
+  };
+
+  function getNodeExperiences(node: GraphNode): string[] {
+    if (!node.experience) return ["professional"];
+    if (Array.isArray(node.experience)) return node.experience;
+    return [node.experience];
+  }
+
+  function isNodeVisible(node: GraphNode, activeFilters: Set<string>): boolean {
+    const exps = getNodeExperiences(node);
+    return exps.some((e) => activeFilters.has(e));
+  }
+
+  async function initGraph() {
+    const wrapper = document.getElementById("graph-wrapper")!;
+    const loading = document.getElementById("graph-loading")!;
+    const tooltipEl = document.getElementById("graph-tooltip")!;
+    const filtersEl = document.getElementById("graph-filters")!;
+
+    let data: GraphData;
+    try {
+      const res = await fetch("/graph.json");
+      data = await res.json();
+    } catch {
+      loading.textContent = "Could not load graph data.";
+      return;
+    }
+
+    loading.remove();
+
+    const connectionCount: Record<string, number> = {};
+    data.edges.forEach((e) => {
+      const s = typeof e.source === "string" ? e.source : e.source.id;
+      const t = typeof e.target === "string" ? e.target : e.target.id;
+      connectionCount[s] = (connectionCount[s] || 0) + 1;
+      connectionCount[t] = (connectionCount[t] || 0) + 1;
+    });
+    data.nodes.forEach((n) => {
+      n.connectionCount = connectionCount[n.id] || 0;
+    });
+
+    const rect = wrapper.getBoundingClientRect();
+    const width = rect.width;
+    const height = Math.max(500, Math.min(700, window.innerHeight * 0.65));
+
+    const svg = d3
+      .select(wrapper)
+      .append("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("viewBox", `0 0 ${width} ${height}`);
+
+    const g = svg.append("g");
+
+    const zoom = d3
+      .zoom<SVGSVGElement, unknown>()
+      .scaleExtent([0.3, 4])
+      .on("zoom", (event) => {
+        g.attr("transform", event.transform);
+      });
+    svg.call(zoom);
+
+    const simulation = d3
+      .forceSimulation<GraphNode>(data.nodes)
+      .force(
+        "link",
+        d3
+          .forceLink<GraphNode, any>(data.edges)
+          .id((d) => d.id)
+          .distance(80)
+      )
+      .force("charge", d3.forceManyBody().strength(-120))
+      .force("center", d3.forceCenter(width / 2, height / 2))
+      .force("collision", d3.forceCollide().radius(12));
+
+    const links = g
+      .append("g")
+      .selectAll("line")
+      .data(data.edges)
+      .join("line")
+      .attr("stroke", "#ccc")
+      .attr("stroke-width", 0.5)
+      .attr("stroke-opacity", 0.4);
+
+    function nodeRadius(d: GraphNode): number {
+      const base =
+        d.type === "role"
+          ? 8
+          : d.type === "project"
+            ? 7
+            : d.type === "education"
+              ? 9
+              : 5;
+      return base + Math.min((d.connectionCount || 0) * 0.3, 6);
+    }
+
+    const nodes = g
+      .append("g")
+      .selectAll<SVGCircleElement, GraphNode>("circle")
+      .data(data.nodes)
+      .join("circle")
+      .attr("r", nodeRadius)
+      .attr("fill", (d) => TYPE_COLORS[d.type] || "#999")
+      .attr("fill-opacity", (d) =>
+        d.type === "skill"
+          ? PROFICIENCY_OPACITY[d.proficiency || "intermediate"]
+          : 1
+      )
+      .attr("stroke", "#fff")
+      .attr("stroke-width", 1.5)
+      .attr("cursor", "grab")
+      .call(
+        d3
+          .drag<SVGCircleElement, GraphNode>()
+          .on("start", (event, d) => {
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+          })
+          .on("drag", (event, d) => {
+            d.fx = event.x;
+            d.fy = event.y;
+          })
+          .on("end", (event, d) => {
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+          })
+      );
+
+    const labels = g
+      .append("g")
+      .selectAll<SVGTextElement, GraphNode>("text")
+      .data(
+        data.nodes.filter(
+          (d) => (d.connectionCount || 0) >= 5 || d.type !== "skill"
+        )
+      )
+      .join("text")
+      .text((d) => d.label)
+      .attr("font-size", (d) => (d.type === "skill" ? "8px" : "9px"))
+      .attr("font-family", "Lato, Arial, sans-serif")
+      .attr("fill", "#333")
+      .attr("text-anchor", "middle")
+      .attr("dy", (d) => -(nodeRadius(d) + 4))
+      .attr("pointer-events", "none");
+
+    // --- Hover interactions ---
+    nodes.on("mouseover", function (event, d) {
+      d3.select(this).attr("stroke", "#00001a").attr("stroke-width", 2.5);
+
+      const connected = new Set<string>();
+      data.edges.forEach((e) => {
+        const s =
+          typeof e.source === "object"
+            ? (e.source as GraphNode).id
+            : e.source;
+        const t =
+          typeof e.target === "object"
+            ? (e.target as GraphNode).id
+            : e.target;
+        if (s === d.id) connected.add(t as string);
+        if (t === d.id) connected.add(s as string);
+      });
+
+      nodes.attr("opacity", (n) =>
+        n.id === d.id || connected.has(n.id) ? 1 : 0.15
+      );
+      links.attr("stroke-opacity", (l) => {
+        const s =
+          typeof l.source === "object"
+            ? (l.source as GraphNode).id
+            : l.source;
+        const t =
+          typeof l.target === "object"
+            ? (l.target as GraphNode).id
+            : l.target;
+        return s === d.id || t === d.id ? 0.8 : 0.05;
+      });
+      links.attr("stroke", (l) => {
+        const s =
+          typeof l.source === "object"
+            ? (l.source as GraphNode).id
+            : l.source;
+        const t =
+          typeof l.target === "object"
+            ? (l.target as GraphNode).id
+            : l.target;
+        return s === d.id || t === d.id ? TYPE_COLORS[d.type] : "#ccc";
+      });
+      labels.attr("opacity", (n) =>
+        n.id === d.id || connected.has(n.id) ? 1 : 0.1
+      );
+
+      const exps = getNodeExperiences(d);
+      const expBadges = exps
+        .map(
+          (e) =>
+            `<span class="tt-exp" style="background:${EXP_COLORS[e]}">${EXP_LABELS[e]}</span>`
+        )
+        .join(" ");
+
+      let detail = `<strong>${d.label}</strong><br/><span class="tt-type">${d.type}</span>`;
+      if (d.proficiency) detail += ` &middot; ${d.proficiency}`;
+      detail += `<br/>${expBadges}`;
+      if (d.company) detail += `<br/>${d.company}`;
+      if (d.dates) detail += `<br/>${d.dates}`;
+      if (d.metrics && d.metrics.length)
+        detail += `<br/>${d.metrics.slice(0, 2).join("<br/>")}`;
+      detail += `<br/><span class="tt-conn">${d.connectionCount} connections</span>`;
+
+      tooltipEl.innerHTML = detail;
+      tooltipEl.style.display = "block";
+
+      const wrapperRect = wrapper.getBoundingClientRect();
+      const x = event.clientX - wrapperRect.left + 16;
+      const y = event.clientY - wrapperRect.top - 10;
+      tooltipEl.style.left = `${x}px`;
+      tooltipEl.style.top = `${y}px`;
+    });
+
+    nodes.on("mouseout", function () {
+      d3.select(this).attr("stroke", "#fff").attr("stroke-width", 1.5);
+      applyFilters();
+      tooltipEl.style.display = "none";
+    });
+
+    // --- Filtering ---
+    const activeFilters = new Set([
+      "professional",
+      "internship",
+      "academic",
+      "personal",
+    ]);
+
+    function applyFilters() {
+      nodes
+        .attr("opacity", (d) => (isNodeVisible(d, activeFilters) ? 1 : 0.08))
+        .attr("pointer-events", (d) =>
+          isNodeVisible(d, activeFilters) ? "all" : "none"
+        );
+
+      links
+        .attr("stroke-opacity", (l) => {
+          const s =
+            typeof l.source === "object"
+              ? (l.source as GraphNode)
+              : data.nodes.find((n) => n.id === l.source)!;
+          const t =
+            typeof l.target === "object"
+              ? (l.target as GraphNode)
+              : data.nodes.find((n) => n.id === l.target)!;
+          return isNodeVisible(s, activeFilters) &&
+            isNodeVisible(t, activeFilters)
+            ? 0.4
+            : 0.03;
+        })
+        .attr("stroke", "#ccc");
+
+      labels.attr("opacity", (d) =>
+        isNodeVisible(d, activeFilters) ? 1 : 0.05
+      );
+    }
+
+    filtersEl.querySelectorAll(".filter-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = (btn as HTMLElement).dataset.filter!;
+        if (activeFilters.has(filter)) {
+          if (activeFilters.size === 1) return;
+          activeFilters.delete(filter);
+          btn.classList.remove("active");
+        } else {
+          activeFilters.add(filter);
+          btn.classList.add("active");
+        }
+        applyFilters();
+      });
+    });
+
+    // --- Simulation tick ---
+    simulation.on("tick", () => {
+      links
+        .attr("x1", (d: any) => d.source.x)
+        .attr("y1", (d: any) => d.source.y)
+        .attr("x2", (d: any) => d.target.x)
+        .attr("y2", (d: any) => d.target.y);
+
+      nodes.attr("cx", (d) => d.x!).attr("cy", (d) => d.y!);
+      labels.attr("x", (d) => d.x!).attr("y", (d) => d.y!);
+    });
+
+    // --- Resize ---
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const newWidth = wrapper.getBoundingClientRect().width;
+        svg
+          .attr("width", newWidth)
+          .attr("viewBox", `0 0 ${newWidth} ${height}`);
+        simulation.force("center", d3.forceCenter(newWidth / 2, height / 2));
+        simulation.alpha(0.3).restart();
+      }, 200);
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initGraph);
+  } else {
+    initGraph();
+  }
+</script>
+
+<style>
+  .cv-graph {
+    padding: 4rem 2rem;
+    background: #f8f8f8;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  h2::after {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 2px;
+    background: #00001a;
+    margin: 1rem auto 0;
+  }
+
+  .cv-graph-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .graph-intro {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 1.25rem;
+  }
+
+  .graph-intro a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .legend {
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+    color: #555;
+  }
+
+  .dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .dot.skill {
+    background: #4a90d9;
+  }
+  .dot.project {
+    background: #50b86c;
+  }
+  .dot.role {
+    background: #e8853d;
+  }
+  .dot.education {
+    background: #9b6dc6;
+  }
+
+  .filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 0.75rem;
+    color: #888;
+    margin-right: 0.25rem;
+  }
+
+  .filter-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.65rem;
+    border: 1.5px solid #d0d0d0;
+    border-radius: 100px;
+    background: white;
+    font-family: "Lato", Arial, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: #888;
+    cursor: pointer;
+    transition:
+      border-color 0.2s,
+      color 0.2s,
+      background 0.2s;
+    letter-spacing: 0.3px;
+  }
+
+  .filter-btn:hover {
+    border-color: #999;
+  }
+
+  .filter-btn.active {
+    color: #333;
+    border-color: #999;
+    background: #f5f5f5;
+  }
+
+  .filter-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+  }
+
+  .filter-btn.active .filter-dot {
+    opacity: 1;
+  }
+
+  .filter-dot.professional {
+    background: #2563eb;
+  }
+  .filter-dot.internship {
+    background: #d97706;
+  }
+  .filter-dot.academic {
+    background: #7c3aed;
+  }
+  .filter-dot.personal {
+    background: #059669;
+  }
+
+  .graph-wrapper {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background: white;
+    overflow: hidden;
+    position: relative;
+    min-height: 500px;
+  }
+
+  .graph-wrapper :global(svg) {
+    display: block;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 4rem;
+    font-size: 0.85rem;
+    color: #888;
+  }
+
+  .tooltip {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 26, 0.92);
+    color: #f8f8f8;
+    padding: 0.6rem 0.8rem;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    pointer-events: none;
+    z-index: 10;
+    max-width: 260px;
+    backdrop-filter: blur(4px);
+  }
+
+  .tooltip :global(.tt-type) {
+    text-transform: capitalize;
+    opacity: 0.7;
+  }
+
+  .tooltip :global(.tt-conn) {
+    opacity: 0.6;
+    font-size: 0.65rem;
+  }
+
+  .tooltip :global(.tt-exp) {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 100px;
+    font-size: 0.6rem;
+    color: white;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .filters {
+      gap: 0.35rem;
+    }
+    .filter-btn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.65rem;
+    }
+    .filter-label {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>

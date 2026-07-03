@@ -1,0 +1,165 @@
+---
+const links = [
+  { href: "#about", label: "About Me" },
+  { href: "https://github.com/anbarsaleem", label: "Github", external: true },
+  { href: "#projects", label: "Projects" },
+  { href: "#cv-graph", label: "Skills Graph" },
+  { href: "/Anbar_Saleem_resume.pdf", label: "Resume" },
+  { href: "#contact", label: "Contact" },
+];
+---
+
+<nav class="navbar" id="navbar">
+  <div class="nav-brand">
+    <img
+      src="/img/cropped_anbar_new_suit_pic.png"
+      width="40"
+      height="40"
+      alt="Anbar Saleem"
+      class="nav-pic"
+    />
+    <span>Anbar Saleem</span>
+  </div>
+  <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <div class="nav-links" id="nav-links">
+    {
+      links.map((link) => (
+        <a
+          href={link.href}
+          target={link.external ? "_blank" : undefined}
+          rel={link.external ? "noopener noreferrer" : undefined}
+        >
+          {link.label}
+        </a>
+      ))
+    }
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById("navbar")!;
+  const toggle = document.getElementById("nav-toggle")!;
+  const navLinks = document.getElementById("nav-links")!;
+
+  window.addEventListener("scroll", () => {
+    navbar.classList.toggle("scrolled", window.scrollY > 100);
+  });
+
+  toggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+    toggle.classList.toggle("open");
+  });
+
+  navLinks.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      toggle.classList.remove("open");
+    });
+  });
+</script>
+
+<style>
+  .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.6rem 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    transition: box-shadow 0.3s;
+  }
+
+  .navbar.scrolled {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 400;
+    margin-right: auto;
+  }
+
+  .nav-pic {
+    border-radius: 50%;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+
+  .nav-links a:hover {
+    background: #f0f0f0;
+  }
+
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: #00001a;
+    transition: transform 0.3s;
+  }
+
+  .nav-toggle.open span:nth-child(1) {
+    transform: rotate(45deg) translate(4px, 4px);
+  }
+  .nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-toggle.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(4px, -4px);
+  }
+
+  @media (max-width: 768px) {
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.98);
+      padding: 1rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.open {
+      display: flex;
+    }
+  }
+</style>

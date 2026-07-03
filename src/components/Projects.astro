@@ -1,0 +1,212 @@
+---
+
+---
+
+<section class="projects" id="projects">
+  <div class="projects-container">
+    <h2>Programming Projects</h2>
+    <p class="projects-intro">
+      Each card shows a public project from my Github profile. Click on a
+      project to toggle its details.
+    </p>
+    <div class="projects-grid" id="projects-grid">
+      <p class="loading">Loading projects...</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  const LANG_COLORS: Record<string, string> = {
+    JavaScript: "#D8C84F",
+    TypeScript: "#007acc",
+    Python: "#306999",
+    Go: "#00ADD8",
+    Java: "#B07219",
+    HTML: "#E34C26",
+    CSS: "#563D7C",
+    "C++": "#f34b7d",
+    C: "#555555",
+    "C#": "#178600",
+    Swift: "#FFAC45",
+    Ruby: "#CC342D",
+    Shell: "#89e051",
+    Dockerfile: "#384d54",
+    HCL: "#844FBA",
+    Vue: "#4FC08D",
+  };
+
+  async function loadProjects() {
+    const grid = document.getElementById("projects-grid")!;
+    try {
+      const res = await fetch(
+        "https://api.github.com/users/anbarsaleem/repos?type=all&sort=created&direction=desc&per_page=30"
+      );
+      const repos = await res.json();
+      const publicRepos = repos.filter(
+        (r: any) => !r.fork && !r.private && r.description
+      );
+
+      grid.innerHTML = "";
+
+      for (const repo of publicRepos) {
+        const langRes = await fetch(repo.languages_url);
+        const languages = await langRes.json();
+        const langNames = Object.keys(languages);
+
+        const card = document.createElement("div");
+        card.className = "project-card";
+        card.innerHTML = `
+          <div class="project-header">
+            <h3>${repo.name}</h3>
+            <div class="lang-tags">
+              ${langNames
+                .slice(0, 4)
+                .map(
+                  (l: string) =>
+                    `<span class="lang-tag" style="background:${LANG_COLORS[l] || "#666"}">${l}</span>`
+                )
+                .join("")}
+            </div>
+          </div>
+          <p class="project-desc">${repo.description || ""}</p>
+          <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-link">View on GitHub</a>
+        `;
+
+        card
+          .querySelector(".project-header")!
+          .addEventListener("click", () => {
+            card.classList.toggle("expanded");
+          });
+
+        grid.appendChild(card);
+      }
+    } catch {
+      grid.innerHTML = '<p class="error">Could not load projects.</p>';
+    }
+  }
+
+  loadProjects();
+</script>
+
+<style>
+  .projects {
+    padding: 4rem 2rem;
+    background: white;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  h2::after {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 2px;
+    background: #00001a;
+    margin: 1rem auto 0;
+  }
+
+  .projects-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .projects-intro {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  .projects-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .loading,
+  .error {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #888;
+  }
+
+  .project-card {
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.2s;
+  }
+
+  .project-card:hover {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .project-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    gap: 0.75rem;
+  }
+
+  .project-header h3 {
+    font-size: 0.95rem;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .lang-tags {
+    display: flex;
+    gap: 0.35rem;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .lang-tag {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  .project-desc,
+  .project-link {
+    display: none;
+  }
+
+  .project-card.expanded .project-desc,
+  .project-card.expanded .project-link {
+    display: block;
+  }
+
+  .project-desc {
+    padding: 0 1.25rem;
+    font-size: 0.8rem;
+    color: #444;
+    line-height: 1.6;
+  }
+
+  .project-link {
+    padding: 0.75rem 1.25rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #00001a;
+    letter-spacing: 1px;
+  }
+
+  .project-link:hover {
+    text-decoration: underline;
+  }
+</style>

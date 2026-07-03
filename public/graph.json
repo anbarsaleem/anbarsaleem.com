@@ -1,0 +1,2041 @@
+{
+  "nodes": [
+    {
+      "id": "ai",
+      "label": "AI",
+      "type": "skill",
+      "file": "skills/ai.md",
+      "proficiency": "intermediate",
+      "category": "methodology",
+      "experience": [
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "ansible",
+      "label": "Ansible",
+      "type": "skill",
+      "file": "skills/ansible.md",
+      "proficiency": "expert",
+      "category": "tool",
+      "experience": [
+        "personal"
+      ]
+    },
+    {
+      "id": "api",
+      "label": "API",
+      "type": "skill",
+      "file": "skills/api.md",
+      "proficiency": "advanced",
+      "category": "framework",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "aws",
+      "label": "AWS",
+      "type": "skill",
+      "file": "skills/aws.md",
+      "proficiency": "advanced",
+      "category": "platform",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "azure",
+      "label": "Azure",
+      "type": "skill",
+      "file": "skills/azure.md",
+      "proficiency": "intermediate",
+      "category": "platform",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "bash",
+      "label": "Bash",
+      "type": "skill",
+      "file": "skills/bash.md",
+      "proficiency": "advanced",
+      "category": "language",
+      "experience": [
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "c-language",
+      "label": "C Language",
+      "type": "skill",
+      "file": "skills/c-lang.md",
+      "proficiency": "intermediate",
+      "category": "language",
+      "experience": [
+        "academic"
+      ]
+    },
+    {
+      "id": "c",
+      "label": "C++",
+      "type": "skill",
+      "file": "skills/cpp.md",
+      "proficiency": "intermediate",
+      "category": "language",
+      "experience": [
+        "academic"
+      ]
+    },
+    {
+      "id": "ci-cd",
+      "label": "CI/CD",
+      "type": "skill",
+      "file": "skills/cicd.md",
+      "proficiency": "advanced",
+      "category": "infrastructure",
+      "experience": [
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "cloud-computing",
+      "label": "Cloud Computing",
+      "type": "skill",
+      "file": "skills/cloud-computing.md",
+      "proficiency": "advanced",
+      "category": "platform",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "cloudflare",
+      "label": "Cloudflare",
+      "type": "skill",
+      "file": "skills/cloudflare.md",
+      "proficiency": "intermediate",
+      "category": "platform",
+      "experience": [
+        "personal"
+      ]
+    },
+    {
+      "id": "couchbase",
+      "label": "Couchbase",
+      "type": "skill",
+      "file": "skills/couchbase.md",
+      "proficiency": "intermediate",
+      "category": "database",
+      "experience": [
+        "internship"
+      ]
+    },
+    {
+      "id": "devops",
+      "label": "DevOps",
+      "type": "skill",
+      "file": "skills/devops.md",
+      "proficiency": "advanced",
+      "category": "methodology",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "docker",
+      "label": "Docker",
+      "type": "skill",
+      "file": "skills/docker.md",
+      "proficiency": "expert",
+      "category": "tool",
+      "experience": [
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "dynamodb",
+      "label": "DynamoDB",
+      "type": "skill",
+      "file": "skills/dynamodb.md",
+      "proficiency": "intermediate",
+      "category": "database",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "generative-ai",
+      "label": "Generative AI",
+      "type": "skill",
+      "file": "skills/generative-ai.md",
+      "proficiency": "intermediate",
+      "category": "methodology",
+      "experience": [
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "github-actions",
+      "label": "GitHub Actions",
+      "type": "skill",
+      "file": "skills/github-actions.md",
+      "proficiency": "advanced",
+      "category": "tool",
+      "experience": [
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "go",
+      "label": "Go",
+      "type": "skill",
+      "file": "skills/go.md",
+      "proficiency": "advanced",
+      "category": "language",
+      "experience": [
+        "academic",
+        "personal"
+      ]
+    },
+    {
+      "id": "grafana",
+      "label": "Grafana",
+      "type": "skill",
+      "file": "skills/grafana.md",
+      "proficiency": "advanced",
+      "category": "tool",
+      "experience": [
+        "personal"
+      ]
+    },
+    {
+      "id": "grpc",
+      "label": "gRPC",
+      "type": "skill",
+      "file": "skills/grpc.md",
+      "proficiency": "intermediate",
+      "category": "framework",
+      "experience": [
+        "academic"
+      ]
+    },
+    {
+      "id": "iac",
+      "label": "IaC",
+      "type": "skill",
+      "file": "skills/iac.md",
+      "proficiency": "advanced",
+      "category": "infrastructure",
+      "experience": [
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "ikev2",
+      "label": "IKEv2",
+      "type": "skill",
+      "file": "skills/ikev2.md",
+      "proficiency": "intermediate",
+      "category": "infrastructure",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "java",
+      "label": "Java",
+      "type": "skill",
+      "file": "skills/java.md",
+      "proficiency": "intermediate",
+      "category": "language",
+      "experience": [
+        "academic"
+      ]
+    },
+    {
+      "id": "kubernetes",
+      "label": "Kubernetes",
+      "type": "skill",
+      "file": "skills/kubernetes.md",
+      "proficiency": "advanced",
+      "category": "platform",
+      "experience": [
+        "personal"
+      ]
+    },
+    {
+      "id": "libvirt",
+      "label": "Libvirt",
+      "type": "skill",
+      "file": "skills/libvirt.md",
+      "proficiency": "advanced",
+      "category": "tool",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "linux",
+      "label": "Linux",
+      "type": "skill",
+      "file": "skills/linux.md",
+      "proficiency": "expert",
+      "category": "platform",
+      "experience": [
+        "academic",
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "mdm",
+      "label": "MDM",
+      "type": "skill",
+      "file": "skills/mdm.md",
+      "proficiency": "intermediate",
+      "category": "tool",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "ml",
+      "label": "ML",
+      "type": "skill",
+      "file": "skills/ml.md",
+      "proficiency": "intermediate",
+      "category": "methodology",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "monitoring",
+      "label": "Monitoring",
+      "type": "skill",
+      "file": "skills/monitoring.md",
+      "proficiency": "advanced",
+      "category": "infrastructure",
+      "experience": [
+        "personal"
+      ]
+    },
+    {
+      "id": "net",
+      "label": ".NET",
+      "type": "skill",
+      "file": "skills/net.md",
+      "proficiency": "intermediate",
+      "category": "framework",
+      "experience": [
+        "internship"
+      ]
+    },
+    {
+      "id": "nosql",
+      "label": "NoSQL",
+      "type": "skill",
+      "file": "skills/nosql.md",
+      "proficiency": "advanced",
+      "category": "database",
+      "experience": [
+        "internship",
+        "professional"
+      ]
+    },
+    {
+      "id": "observability",
+      "label": "Observability",
+      "type": "skill",
+      "file": "skills/observability.md",
+      "proficiency": "advanced",
+      "category": "infrastructure",
+      "experience": [
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "openai",
+      "label": "OpenAI",
+      "type": "skill",
+      "file": "skills/openai.md",
+      "proficiency": "intermediate",
+      "category": "framework",
+      "experience": [
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "packer",
+      "label": "Packer",
+      "type": "skill",
+      "file": "skills/packer.md",
+      "proficiency": "advanced",
+      "category": "tool",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "prometheus",
+      "label": "Prometheus",
+      "type": "skill",
+      "file": "skills/prometheus.md",
+      "proficiency": "advanced",
+      "category": "tool",
+      "experience": [
+        "personal"
+      ]
+    },
+    {
+      "id": "protobuf",
+      "label": "Protobuf",
+      "type": "skill",
+      "file": "skills/protobuf.md",
+      "proficiency": "intermediate",
+      "category": "framework",
+      "experience": [
+        "academic"
+      ]
+    },
+    {
+      "id": "python",
+      "label": "Python",
+      "type": "skill",
+      "file": "skills/python.md",
+      "proficiency": "expert",
+      "category": "language",
+      "experience": [
+        "academic",
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "rag",
+      "label": "RAG",
+      "type": "skill",
+      "file": "skills/rag.md",
+      "proficiency": "intermediate",
+      "category": "methodology",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "react",
+      "label": "React",
+      "type": "skill",
+      "file": "skills/react.md",
+      "proficiency": "advanced",
+      "category": "framework",
+      "experience": [
+        "internship",
+        "professional"
+      ]
+    },
+    {
+      "id": "redux",
+      "label": "Redux",
+      "type": "skill",
+      "file": "skills/redux.md",
+      "proficiency": "intermediate",
+      "category": "framework",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "rest-api",
+      "label": "REST API",
+      "type": "skill",
+      "file": "skills/rest-api.md",
+      "proficiency": "advanced",
+      "category": "framework",
+      "experience": [
+        "internship",
+        "professional"
+      ]
+    },
+    {
+      "id": "sql",
+      "label": "SQL",
+      "type": "skill",
+      "file": "skills/sql.md",
+      "proficiency": "advanced",
+      "category": "language",
+      "experience": [
+        "academic",
+        "internship"
+      ]
+    },
+    {
+      "id": "streamlit",
+      "label": "Streamlit",
+      "type": "skill",
+      "file": "skills/streamlit.md",
+      "proficiency": "intermediate",
+      "category": "tool",
+      "experience": [
+        "personal",
+        "professional"
+      ]
+    },
+    {
+      "id": "strongswan",
+      "label": "Strongswan",
+      "type": "skill",
+      "file": "skills/strongswan.md",
+      "proficiency": "intermediate",
+      "category": "tool",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "tailscale",
+      "label": "Tailscale",
+      "type": "skill",
+      "file": "skills/tailscale.md",
+      "proficiency": "advanced",
+      "category": "tool",
+      "experience": [
+        "personal"
+      ]
+    },
+    {
+      "id": "terraform",
+      "label": "Terraform",
+      "type": "skill",
+      "file": "skills/terraform.md",
+      "proficiency": "advanced",
+      "category": "tool",
+      "experience": [
+        "personal"
+      ]
+    },
+    {
+      "id": "typescript",
+      "label": "TypeScript",
+      "type": "skill",
+      "file": "skills/typescript.md",
+      "proficiency": "advanced",
+      "category": "framework",
+      "experience": [
+        "internship",
+        "professional"
+      ]
+    },
+    {
+      "id": "unity",
+      "label": "Unity",
+      "type": "skill",
+      "file": "skills/unity.md",
+      "proficiency": "intermediate",
+      "category": "framework",
+      "experience": [
+        "academic"
+      ]
+    },
+    {
+      "id": "vpn",
+      "label": "VPN",
+      "type": "skill",
+      "file": "skills/vpn.md",
+      "proficiency": "intermediate",
+      "category": "infrastructure",
+      "experience": [
+        "professional"
+      ]
+    },
+    {
+      "id": "ai-compliance-forms",
+      "label": "AI Compliance Forms",
+      "type": "project",
+      "file": "projects/ai-compliance-forms.md",
+      "metrics": [
+        "Natural language to auto-filled forms",
+        "Regulatory compliance data integrity"
+      ],
+      "experience": "professional"
+    },
+    {
+      "id": "ai-course-mentor",
+      "label": "AI Course Mentor",
+      "type": "project",
+      "file": "projects/ai-course-mentor.md",
+      "metrics": [
+        "300+ course listings structured",
+        "69% improvement in backend processing speed (profiled)",
+        "Open-source on GitHub"
+      ],
+      "experience": "personal"
+    },
+    {
+      "id": "ci-cd-pipeline-platform",
+      "label": "CI/CD Pipeline Platform",
+      "type": "project",
+      "file": "projects/cicd-pipeline-platform.md",
+      "metrics": [
+        "Pipeline-as-code definitions",
+        "Build automation improvements"
+      ],
+      "experience": "professional"
+    },
+    {
+      "id": "concurrent-file-transfer-system",
+      "label": "Concurrent File Transfer System",
+      "type": "project",
+      "file": "projects/concurrent-file-transfer.md",
+      "metrics": [
+        "Multithreaded server with concurrency primitives",
+        "gRPC/Protobuf inter-process communication"
+      ],
+      "experience": "academic"
+    },
+    {
+      "id": "gpu-inference-server",
+      "label": "GPU Inference Server",
+      "type": "project",
+      "file": "projects/gpu-inference-server.md",
+      "metrics": [
+        "4 GGUF models benchmarked (Qwen3-27B",
+        "Gemma4-26B",
+        "QwQ-32B",
+        "Devstral-24B)",
+        "Profiled 4K-98K token context sizes",
+        "Zero-exposed-port HTTPS via Cloudflare Tunnel"
+      ],
+      "experience": "personal"
+    },
+    {
+      "id": "infrastructure-validation-tool",
+      "label": "Infrastructure Validation Tool",
+      "type": "project",
+      "file": "projects/infrastructure-validation-tool.md",
+      "metrics": [
+        "300+ production VMs managed",
+        "Disaster recovery diagnostics: 2 hours \\u2192 under 10 minutes"
+      ],
+      "experience": "professional"
+    },
+    {
+      "id": "multi-node-homelab",
+      "label": "Multi-Node Homelab",
+      "type": "project",
+      "file": "projects/multi-node-homelab.md",
+      "metrics": [
+        "Self-managed Kubernetes cluster across 4 nodes",
+        "8 Ansible playbooks for provisioning and hardening",
+        "Full Prometheus + Grafana observability stack",
+        "GitHub Actions CI/CD for infra repos",
+        "Zero-downtime rolling deployments"
+      ],
+      "experience": "personal"
+    },
+    {
+      "id": "packer-ami-pipeline",
+      "label": "Packer AMI Pipeline",
+      "type": "project",
+      "file": "projects/packer-ami-pipeline.md",
+      "metrics": [
+        "Automated AMI generation for AWS Outposts",
+        "Integrated with GitHub Actions CI/CD for automated image builds"
+      ],
+      "experience": "professional"
+    },
+    {
+      "id": "parcel-tracking-app",
+      "label": "Parcel Tracking App",
+      "type": "project",
+      "file": "projects/parcel-tracking-app.md",
+      "metrics": [
+        "SQL to NoSQL (Couchbase) migration",
+        "5-member team led"
+      ],
+      "experience": "internship"
+    },
+    {
+      "id": "rag-publications-tool",
+      "label": "RAG Publications Tool",
+      "type": "project",
+      "file": "projects/rag-publications-tool.md",
+      "metrics": [
+        "50+ proprietary publications indexed",
+        "60% faster onboarding efficiency"
+      ],
+      "experience": "professional"
+    },
+    {
+      "id": "redfish-api-server-profiler",
+      "label": "Redfish API Server Profiler",
+      "type": "project",
+      "file": "projects/redfish-api-server-profiler.md",
+      "metrics": [
+        "Hardware telemetry collection across production fleet",
+        "Firmware version tracking",
+        "Configuration drift detection"
+      ],
+      "experience": "professional"
+    },
+    {
+      "id": "saas-frontend-refactor",
+      "label": "SaaS Frontend Refactor",
+      "type": "project",
+      "file": "projects/saas-frontend-refactor.md",
+      "metrics": [
+        "300+ lines of code removed",
+        "Multi-page navigation support added"
+      ],
+      "experience": "professional"
+    },
+    {
+      "id": "site-profile-hub",
+      "label": "Site Profile Hub",
+      "type": "project",
+      "file": "projects/site-profile-hub.md",
+      "metrics": [
+        "Automated locale detection",
+        "Translation workflows implemented"
+      ],
+      "experience": "internship"
+    },
+    {
+      "id": "vex-robotics-programming",
+      "label": "VEX Robotics Programming",
+      "type": "project",
+      "file": "projects/vex-robotics-programming.md",
+      "metrics": [
+        "Autonomous movement algorithms",
+        "Competition judge certified"
+      ],
+      "experience": "academic"
+    },
+    {
+      "id": "vr-roman-shrines-scenotate",
+      "label": "VR Roman Shrines (Scenotate)",
+      "type": "project",
+      "file": "projects/vr-roman-shrines-scenotate.md",
+      "metrics": [
+        "100+ panoramic images converted",
+        "CSV-to-object parsing tool built"
+      ],
+      "experience": "academic"
+    },
+    {
+      "id": "zero-touch-vpn-provisioning",
+      "label": "Zero-Touch VPN Provisioning",
+      "type": "project",
+      "file": "projects/zero-touch-vpn-provisioning.md",
+      "metrics": [
+        "70% reduction in manual onboarding time",
+        "Automated certificate lifecycle management"
+      ],
+      "experience": "professional"
+    },
+    {
+      "id": "application-development-intern-at-colgate-palmolive",
+      "label": "Application Development Intern at Colgate-Palmolive",
+      "type": "role",
+      "file": "roles/application-dev-intern-colgate.md",
+      "company": "Colgate-Palmolive",
+      "dates": "Sep 2022 - Jan 2023",
+      "experience": "internship"
+    },
+    {
+      "id": "computer-science-tutor",
+      "label": "Computer Science Tutor",
+      "type": "role",
+      "file": "roles/computer-science-tutor.md",
+      "company": "NJIT",
+      "dates": "Sep 2023 - Dec 2023",
+      "experience": "academic"
+    },
+    {
+      "id": "personal-homelab",
+      "label": "Personal Homelab",
+      "type": "role",
+      "file": "roles/personal-homelab.md",
+      "company": "Personal",
+      "dates": "Ongoing",
+      "experience": "personal"
+    },
+    {
+      "id": "project-lead-developer-at-njit",
+      "label": "Project Lead Developer at NJIT",
+      "type": "role",
+      "file": "roles/project-lead-developer-njit.md",
+      "company": "NJIT Interactive Cross-Reality Lab",
+      "dates": "Dec 2021 - Aug 2022",
+      "experience": "academic"
+    },
+    {
+      "id": "software-engineer-at-artemis-ops",
+      "label": "Software Engineer at Artemis Ops",
+      "type": "role",
+      "file": "roles/software-engineer-artemis-ops.md",
+      "company": "Artemis Ops (formerly Meili Technologies)",
+      "dates": "Oct 2024 - Jul 2025",
+      "experience": "professional"
+    },
+    {
+      "id": "software-engineer-at-at-t",
+      "label": "Software Engineer at AT&T",
+      "type": "role",
+      "file": "roles/software-engineer-at-tt.md",
+      "company": "AT&T",
+      "dates": "Jul 2025 - Present",
+      "experience": "professional"
+    },
+    {
+      "id": "software-engineer-at-genmab",
+      "label": "Software Engineer at Genmab",
+      "type": "role",
+      "file": "roles/software-engineer-genmab.md",
+      "company": "Genmab",
+      "dates": "Jun 2024 - Sep 2024",
+      "experience": "professional"
+    },
+    {
+      "id": "software-engineer-intern-at-ups",
+      "label": "Software Engineer Intern at UPS",
+      "type": "role",
+      "file": "roles/software-engineer-intern-ups.md",
+      "company": "UPS",
+      "dates": "Jan 2024 - May 2024",
+      "experience": "internship"
+    },
+    {
+      "id": "vex-team-programmer",
+      "label": "VEX Team Programmer",
+      "type": "role",
+      "file": "roles/vex-team-programmer.md",
+      "company": "NJIT Robotics Club",
+      "dates": "May 2022 - Dec 2024",
+      "experience": "academic"
+    },
+    {
+      "id": "bs-computer-science-njit",
+      "label": "BS Computer Science \u2014 NJIT",
+      "type": "education",
+      "file": "education/bs-computer-science-njit.md",
+      "status": "Completed",
+      "experience": "academic"
+    },
+    {
+      "id": "ms-computer-science-georgia-tech",
+      "label": "MS Computer Science \u2014 Georgia Tech",
+      "type": "education",
+      "file": "education/ms-computer-science-georgia-tech.md",
+      "status": "In Progress",
+      "experience": "academic"
+    }
+  ],
+  "edges": [
+    {
+      "source": "packer-ami-pipeline",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "python",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "rest-api",
+      "target": "sql"
+    },
+    {
+      "source": "docker",
+      "target": "software-engineer-at-genmab"
+    },
+    {
+      "source": "iac",
+      "target": "packer-ami-pipeline"
+    },
+    {
+      "source": "dynamodb",
+      "target": "software-engineer-at-artemis-ops"
+    },
+    {
+      "source": "c",
+      "target": "project-lead-developer-at-njit"
+    },
+    {
+      "source": "infrastructure-validation-tool",
+      "target": "linux"
+    },
+    {
+      "source": "openai",
+      "target": "python"
+    },
+    {
+      "source": "project-lead-developer-at-njit",
+      "target": "unity"
+    },
+    {
+      "source": "openai",
+      "target": "software-engineer-at-artemis-ops"
+    },
+    {
+      "source": "linux",
+      "target": "mdm"
+    },
+    {
+      "source": "ai",
+      "target": "ai-compliance-forms"
+    },
+    {
+      "source": "ai",
+      "target": "software-engineer-at-genmab"
+    },
+    {
+      "source": "devops",
+      "target": "docker"
+    },
+    {
+      "source": "bash",
+      "target": "linux"
+    },
+    {
+      "source": "ml",
+      "target": "streamlit"
+    },
+    {
+      "source": "multi-node-homelab",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "ansible",
+      "target": "bash"
+    },
+    {
+      "source": "iac",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "gpu-inference-server",
+      "target": "kubernetes"
+    },
+    {
+      "source": "rag",
+      "target": "rag-publications-tool"
+    },
+    {
+      "source": "ai-course-mentor",
+      "target": "streamlit"
+    },
+    {
+      "source": "ansible",
+      "target": "docker"
+    },
+    {
+      "source": "rest-api",
+      "target": "site-profile-hub"
+    },
+    {
+      "source": "rest-api",
+      "target": "saas-frontend-refactor"
+    },
+    {
+      "source": "linux",
+      "target": "prometheus"
+    },
+    {
+      "source": "docker",
+      "target": "rest-api"
+    },
+    {
+      "source": "packer",
+      "target": "packer-ami-pipeline"
+    },
+    {
+      "source": "multi-node-homelab",
+      "target": "observability"
+    },
+    {
+      "source": "iac",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "monitoring",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "python",
+      "target": "strongswan"
+    },
+    {
+      "source": "software-engineer-at-artemis-ops",
+      "target": "typescript"
+    },
+    {
+      "source": "ci-cd",
+      "target": "linux"
+    },
+    {
+      "source": "redfish-api-server-profiler",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "python",
+      "target": "zero-touch-vpn-provisioning"
+    },
+    {
+      "source": "libvirt",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "docker",
+      "target": "openai"
+    },
+    {
+      "source": "aws",
+      "target": "software-engineer-at-genmab"
+    },
+    {
+      "source": "observability",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "ai-compliance-forms",
+      "target": "typescript"
+    },
+    {
+      "source": "docker",
+      "target": "java"
+    },
+    {
+      "source": "linux",
+      "target": "rest-api"
+    },
+    {
+      "source": "linux",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "concurrent-file-transfer-system",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "ai",
+      "target": "docker"
+    },
+    {
+      "source": "ai",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "generative-ai",
+      "target": "streamlit"
+    },
+    {
+      "source": "python",
+      "target": "streamlit"
+    },
+    {
+      "source": "software-engineer-at-at-t",
+      "target": "strongswan"
+    },
+    {
+      "source": "ml",
+      "target": "rag-publications-tool"
+    },
+    {
+      "source": "packer",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "software-engineer-at-at-t",
+      "target": "zero-touch-vpn-provisioning"
+    },
+    {
+      "source": "azure",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "docker",
+      "target": "observability"
+    },
+    {
+      "source": "personal-homelab",
+      "target": "tailscale"
+    },
+    {
+      "source": "c",
+      "target": "grpc"
+    },
+    {
+      "source": "infrastructure-validation-tool",
+      "target": "libvirt"
+    },
+    {
+      "source": "aws",
+      "target": "rag-publications-tool"
+    },
+    {
+      "source": "net",
+      "target": "parcel-tracking-app"
+    },
+    {
+      "source": "couchbase",
+      "target": "parcel-tracking-app"
+    },
+    {
+      "source": "nosql",
+      "target": "rest-api"
+    },
+    {
+      "source": "ai-course-mentor",
+      "target": "rag-publications-tool"
+    },
+    {
+      "source": "python",
+      "target": "vex-team-programmer"
+    },
+    {
+      "source": "rag-publications-tool",
+      "target": "streamlit"
+    },
+    {
+      "source": "ansible",
+      "target": "terraform"
+    },
+    {
+      "source": "mdm",
+      "target": "python"
+    },
+    {
+      "source": "grafana",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "linux",
+      "target": "observability"
+    },
+    {
+      "source": "ansible",
+      "target": "azure"
+    },
+    {
+      "source": "docker",
+      "target": "generative-ai"
+    },
+    {
+      "source": "react",
+      "target": "rest-api"
+    },
+    {
+      "source": "ci-cd-pipeline-platform",
+      "target": "docker"
+    },
+    {
+      "source": "software-engineer-at-genmab",
+      "target": "streamlit"
+    },
+    {
+      "source": "parcel-tracking-app",
+      "target": "software-engineer-intern-at-ups"
+    },
+    {
+      "source": "c",
+      "target": "linux"
+    },
+    {
+      "source": "ci-cd",
+      "target": "ci-cd-pipeline-platform"
+    },
+    {
+      "source": "concurrent-file-transfer-system",
+      "target": "go"
+    },
+    {
+      "source": "iac",
+      "target": "linux"
+    },
+    {
+      "source": "rest-api",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "github-actions",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "multi-node-homelab",
+      "target": "tailscale"
+    },
+    {
+      "source": "aws",
+      "target": "docker"
+    },
+    {
+      "source": "docker",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "ai-course-mentor",
+      "target": "docker"
+    },
+    {
+      "source": "rag",
+      "target": "software-engineer-at-genmab"
+    },
+    {
+      "source": "monitoring",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "gpu-inference-server",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "rest-api",
+      "target": "software-engineer-intern-at-ups"
+    },
+    {
+      "source": "docker",
+      "target": "github-actions"
+    },
+    {
+      "source": "docker",
+      "target": "python"
+    },
+    {
+      "source": "docker",
+      "target": "ml"
+    },
+    {
+      "source": "python",
+      "target": "rag-publications-tool"
+    },
+    {
+      "source": "docker",
+      "target": "software-engineer-at-artemis-ops"
+    },
+    {
+      "source": "generative-ai",
+      "target": "rag-publications-tool"
+    },
+    {
+      "source": "grpc",
+      "target": "protobuf"
+    },
+    {
+      "source": "api",
+      "target": "redfish-api-server-profiler"
+    },
+    {
+      "source": "project-lead-developer-at-njit",
+      "target": "vr-roman-shrines-scenotate"
+    },
+    {
+      "source": "computer-science-tutor",
+      "target": "java"
+    },
+    {
+      "source": "go",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "kubernetes",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "linux",
+      "target": "redfish-api-server-profiler"
+    },
+    {
+      "source": "python",
+      "target": "rag"
+    },
+    {
+      "source": "rest-api",
+      "target": "typescript"
+    },
+    {
+      "source": "docker",
+      "target": "kubernetes"
+    },
+    {
+      "source": "react",
+      "target": "sql"
+    },
+    {
+      "source": "ai-compliance-forms",
+      "target": "dynamodb"
+    },
+    {
+      "source": "libvirt",
+      "target": "linux"
+    },
+    {
+      "source": "linux",
+      "target": "python"
+    },
+    {
+      "source": "python",
+      "target": "vr-roman-shrines-scenotate"
+    },
+    {
+      "source": "ai",
+      "target": "python"
+    },
+    {
+      "source": "gpu-inference-server",
+      "target": "tailscale"
+    },
+    {
+      "source": "linux",
+      "target": "vpn"
+    },
+    {
+      "source": "ansible",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "c",
+      "target": "concurrent-file-transfer-system"
+    },
+    {
+      "source": "vpn",
+      "target": "zero-touch-vpn-provisioning"
+    },
+    {
+      "source": "infrastructure-validation-tool",
+      "target": "redfish-api-server-profiler"
+    },
+    {
+      "source": "generative-ai",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "computer-science-tutor",
+      "target": "sql"
+    },
+    {
+      "source": "generative-ai",
+      "target": "gpu-inference-server"
+    },
+    {
+      "source": "docker",
+      "target": "go"
+    },
+    {
+      "source": "ml",
+      "target": "software-engineer-at-genmab"
+    },
+    {
+      "source": "nosql",
+      "target": "python"
+    },
+    {
+      "source": "openai",
+      "target": "streamlit"
+    },
+    {
+      "source": "saas-frontend-refactor",
+      "target": "typescript"
+    },
+    {
+      "source": "go",
+      "target": "grpc"
+    },
+    {
+      "source": "application-development-intern-at-colgate-palmolive",
+      "target": "typescript"
+    },
+    {
+      "source": "api",
+      "target": "docker"
+    },
+    {
+      "source": "software-engineer-intern-at-ups",
+      "target": "sql"
+    },
+    {
+      "source": "gpu-inference-server",
+      "target": "linux"
+    },
+    {
+      "source": "mdm",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "project-lead-developer-at-njit",
+      "target": "sql"
+    },
+    {
+      "source": "aws",
+      "target": "terraform"
+    },
+    {
+      "source": "site-profile-hub",
+      "target": "typescript"
+    },
+    {
+      "source": "saas-frontend-refactor",
+      "target": "software-engineer-at-artemis-ops"
+    },
+    {
+      "source": "parcel-tracking-app",
+      "target": "react"
+    },
+    {
+      "source": "concurrent-file-transfer-system",
+      "target": "ms-computer-science-georgia-tech"
+    },
+    {
+      "source": "react",
+      "target": "site-profile-hub"
+    },
+    {
+      "source": "cloudflare",
+      "target": "tailscale"
+    },
+    {
+      "source": "computer-science-tutor",
+      "target": "python"
+    },
+    {
+      "source": "docker",
+      "target": "infrastructure-validation-tool"
+    },
+    {
+      "source": "kubernetes",
+      "target": "terraform"
+    },
+    {
+      "source": "linux",
+      "target": "packer-ami-pipeline"
+    },
+    {
+      "source": "c",
+      "target": "net"
+    },
+    {
+      "source": "ai-compliance-forms",
+      "target": "docker"
+    },
+    {
+      "source": "net",
+      "target": "rest-api"
+    },
+    {
+      "source": "ansible",
+      "target": "cloud-computing"
+    },
+    {
+      "source": "couchbase",
+      "target": "rest-api"
+    },
+    {
+      "source": "c",
+      "target": "c-language"
+    },
+    {
+      "source": "ci-cd-pipeline-platform",
+      "target": "devops"
+    },
+    {
+      "source": "docker",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "ansible",
+      "target": "aws"
+    },
+    {
+      "source": "ikev2",
+      "target": "python"
+    },
+    {
+      "source": "redux",
+      "target": "rest-api"
+    },
+    {
+      "source": "bash",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "project-lead-developer-at-njit",
+      "target": "python"
+    },
+    {
+      "source": "python",
+      "target": "software-engineer-at-genmab"
+    },
+    {
+      "source": "generative-ai",
+      "target": "software-engineer-at-genmab"
+    },
+    {
+      "source": "concurrent-file-transfer-system",
+      "target": "grpc"
+    },
+    {
+      "source": "aws",
+      "target": "packer"
+    },
+    {
+      "source": "ansible",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "cloudflare",
+      "target": "linux"
+    },
+    {
+      "source": "python",
+      "target": "redfish-api-server-profiler"
+    },
+    {
+      "source": "linux",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "c-language",
+      "target": "concurrent-file-transfer-system"
+    },
+    {
+      "source": "openai",
+      "target": "rag-publications-tool"
+    },
+    {
+      "source": "python",
+      "target": "vpn"
+    },
+    {
+      "source": "infrastructure-validation-tool",
+      "target": "observability"
+    },
+    {
+      "source": "ci-cd-pipeline-platform",
+      "target": "packer-ami-pipeline"
+    },
+    {
+      "source": "dynamodb",
+      "target": "rest-api"
+    },
+    {
+      "source": "python",
+      "target": "vex-robotics-programming"
+    },
+    {
+      "source": "application-development-intern-at-colgate-palmolive",
+      "target": "react"
+    },
+    {
+      "source": "concurrent-file-transfer-system",
+      "target": "linux"
+    },
+    {
+      "source": "rag-publications-tool",
+      "target": "software-engineer-at-genmab"
+    },
+    {
+      "source": "c",
+      "target": "vex-team-programmer"
+    },
+    {
+      "source": "github-actions",
+      "target": "packer-ami-pipeline"
+    },
+    {
+      "source": "ansible",
+      "target": "kubernetes"
+    },
+    {
+      "source": "aws",
+      "target": "packer-ami-pipeline"
+    },
+    {
+      "source": "ai-course-mentor",
+      "target": "openai"
+    },
+    {
+      "source": "mdm",
+      "target": "zero-touch-vpn-provisioning"
+    },
+    {
+      "source": "ci-cd",
+      "target": "docker"
+    },
+    {
+      "source": "ci-cd",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "parcel-tracking-app",
+      "target": "rest-api"
+    },
+    {
+      "source": "linux",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "redux",
+      "target": "sql"
+    },
+    {
+      "source": "ansible",
+      "target": "tailscale"
+    },
+    {
+      "source": "software-engineer-at-at-t",
+      "target": "vpn"
+    },
+    {
+      "source": "ci-cd-pipeline-platform",
+      "target": "iac"
+    },
+    {
+      "source": "nosql",
+      "target": "software-engineer-intern-at-ups"
+    },
+    {
+      "source": "rest-api",
+      "target": "unity"
+    },
+    {
+      "source": "ci-cd",
+      "target": "packer-ami-pipeline"
+    },
+    {
+      "source": "ci-cd-pipeline-platform",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "ai",
+      "target": "software-engineer-at-artemis-ops"
+    },
+    {
+      "source": "github-actions",
+      "target": "iac"
+    },
+    {
+      "source": "github-actions",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "aws",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "ai-compliance-forms",
+      "target": "python"
+    },
+    {
+      "source": "infrastructure-validation-tool",
+      "target": "python"
+    },
+    {
+      "source": "personal-homelab",
+      "target": "prometheus"
+    },
+    {
+      "source": "linux",
+      "target": "tailscale"
+    },
+    {
+      "source": "grafana",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "sql",
+      "target": "typescript"
+    },
+    {
+      "source": "couchbase",
+      "target": "python"
+    },
+    {
+      "source": "ai-course-mentor",
+      "target": "generative-ai"
+    },
+    {
+      "source": "nosql",
+      "target": "software-engineer-at-artemis-ops"
+    },
+    {
+      "source": "linux",
+      "target": "strongswan"
+    },
+    {
+      "source": "parcel-tracking-app",
+      "target": "sql"
+    },
+    {
+      "source": "devops",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "docker",
+      "target": "linux"
+    },
+    {
+      "source": "ikev2",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "c",
+      "target": "unity"
+    },
+    {
+      "source": "c",
+      "target": "vr-roman-shrines-scenotate"
+    },
+    {
+      "source": "ml",
+      "target": "python"
+    },
+    {
+      "source": "c-language",
+      "target": "linux"
+    },
+    {
+      "source": "linux",
+      "target": "zero-touch-vpn-provisioning"
+    },
+    {
+      "source": "redux",
+      "target": "software-engineer-at-artemis-ops"
+    },
+    {
+      "source": "github-actions",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "react",
+      "target": "software-engineer-at-artemis-ops"
+    },
+    {
+      "source": "c",
+      "target": "docker"
+    },
+    {
+      "source": "redux",
+      "target": "saas-frontend-refactor"
+    },
+    {
+      "source": "vex-robotics-programming",
+      "target": "vex-team-programmer"
+    },
+    {
+      "source": "cloudflare",
+      "target": "gpu-inference-server"
+    },
+    {
+      "source": "iac",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "react",
+      "target": "saas-frontend-refactor"
+    },
+    {
+      "source": "application-development-intern-at-colgate-palmolive",
+      "target": "rest-api"
+    },
+    {
+      "source": "python",
+      "target": "sql"
+    },
+    {
+      "source": "ai",
+      "target": "streamlit"
+    },
+    {
+      "source": "go",
+      "target": "linux"
+    },
+    {
+      "source": "ansible",
+      "target": "iac"
+    },
+    {
+      "source": "ai-course-mentor",
+      "target": "python"
+    },
+    {
+      "source": "multi-node-homelab",
+      "target": "prometheus"
+    },
+    {
+      "source": "cloud-computing",
+      "target": "docker"
+    },
+    {
+      "source": "openai",
+      "target": "software-engineer-at-genmab"
+    },
+    {
+      "source": "dynamodb",
+      "target": "python"
+    },
+    {
+      "source": "ci-cd",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "kubernetes",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "ci-cd",
+      "target": "github-actions"
+    },
+    {
+      "source": "c",
+      "target": "protobuf"
+    },
+    {
+      "source": "ai-compliance-forms",
+      "target": "openai"
+    },
+    {
+      "source": "infrastructure-validation-tool",
+      "target": "packer-ami-pipeline"
+    },
+    {
+      "source": "c",
+      "target": "computer-science-tutor"
+    },
+    {
+      "source": "redfish-api-server-profiler",
+      "target": "rest-api"
+    },
+    {
+      "source": "azure",
+      "target": "ci-cd-pipeline-platform"
+    },
+    {
+      "source": "api",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "grafana",
+      "target": "linux"
+    },
+    {
+      "source": "docker",
+      "target": "prometheus"
+    },
+    {
+      "source": "docker",
+      "target": "rag-publications-tool"
+    },
+    {
+      "source": "ai-compliance-forms",
+      "target": "nosql"
+    },
+    {
+      "source": "generative-ai",
+      "target": "python"
+    },
+    {
+      "source": "java",
+      "target": "linux"
+    },
+    {
+      "source": "concurrent-file-transfer-system",
+      "target": "protobuf"
+    },
+    {
+      "source": "generative-ai",
+      "target": "software-engineer-at-artemis-ops"
+    },
+    {
+      "source": "docker",
+      "target": "rag"
+    },
+    {
+      "source": "infrastructure-validation-tool",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "azure",
+      "target": "docker"
+    },
+    {
+      "source": "bash",
+      "target": "infrastructure-validation-tool"
+    },
+    {
+      "source": "ikev2",
+      "target": "zero-touch-vpn-provisioning"
+    },
+    {
+      "source": "unity",
+      "target": "vr-roman-shrines-scenotate"
+    },
+    {
+      "source": "iac",
+      "target": "terraform"
+    },
+    {
+      "source": "ai",
+      "target": "rag-publications-tool"
+    },
+    {
+      "source": "personal-homelab",
+      "target": "terraform"
+    },
+    {
+      "source": "ai-compliance-forms",
+      "target": "generative-ai"
+    },
+    {
+      "source": "bash",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "docker",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "gpu-inference-server",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "sql",
+      "target": "vr-roman-shrines-scenotate"
+    },
+    {
+      "source": "docker",
+      "target": "gpu-inference-server"
+    },
+    {
+      "source": "docker",
+      "target": "grafana"
+    },
+    {
+      "source": "devops",
+      "target": "linux"
+    },
+    {
+      "source": "ikev2",
+      "target": "linux"
+    },
+    {
+      "source": "couchbase",
+      "target": "software-engineer-intern-at-ups"
+    },
+    {
+      "source": "net",
+      "target": "software-engineer-intern-at-ups"
+    },
+    {
+      "source": "docker",
+      "target": "monitoring"
+    },
+    {
+      "source": "c",
+      "target": "vex-robotics-programming"
+    },
+    {
+      "source": "react",
+      "target": "software-engineer-intern-at-ups"
+    },
+    {
+      "source": "go",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "application-development-intern-at-colgate-palmolive",
+      "target": "site-profile-hub"
+    },
+    {
+      "source": "ansible",
+      "target": "linux"
+    },
+    {
+      "source": "ai",
+      "target": "gpu-inference-server"
+    },
+    {
+      "source": "bash",
+      "target": "multi-node-homelab"
+    },
+    {
+      "source": "ai-compliance-forms",
+      "target": "software-engineer-at-artemis-ops"
+    },
+    {
+      "source": "multi-node-homelab",
+      "target": "terraform"
+    },
+    {
+      "source": "linux",
+      "target": "monitoring"
+    },
+    {
+      "source": "ci-cd",
+      "target": "software-engineer-at-at-t"
+    },
+    {
+      "source": "ci-cd",
+      "target": "iac"
+    },
+    {
+      "source": "iac",
+      "target": "packer"
+    },
+    {
+      "source": "strongswan",
+      "target": "zero-touch-vpn-provisioning"
+    },
+    {
+      "source": "rag",
+      "target": "streamlit"
+    },
+    {
+      "source": "nosql",
+      "target": "parcel-tracking-app"
+    },
+    {
+      "source": "cloudflare",
+      "target": "docker"
+    },
+    {
+      "source": "cloudflare",
+      "target": "personal-homelab"
+    },
+    {
+      "source": "libvirt",
+      "target": "python"
+    },
+    {
+      "source": "go",
+      "target": "protobuf"
+    },
+    {
+      "source": "packer",
+      "target": "terraform"
+    },
+    {
+      "source": "api",
+      "target": "linux"
+    }
+  ],
+  "meta": {
+    "total_nodes": 76,
+    "total_edges": 296,
+    "types": {
+      "skill": 49,
+      "project": 16,
+      "role": 9,
+      "education": 2
+    }
+  }
+}

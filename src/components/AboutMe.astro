@@ -1,0 +1,111 @@
+---
+
+---
+
+<section class="about" id="about">
+  <div class="about-container">
+    <h2>About Me</h2>
+    <div class="about-content">
+      <div class="photo-wrapper">
+        <img
+          src="/img/anbar_new_suit_pic.png"
+          alt="Anbar Saleem"
+          class="profile-pic"
+        />
+      </div>
+      <div class="bio">
+        <p>
+          Hardworker, Tenor II Singer (Men's Choir and Shower), Lefty, and Super
+          Mario Enthusiast
+        </p>
+        <p>
+          I am currently a Software Engineer at AT&T and alumni from <strong
+            >New Jersey Institute of Technology's Albert Dorman Honors College</strong
+          > with a Bachelor's Degree in <strong>Computer Science</strong>.
+          Outside of my work and prior degree pursuing, I also pursue different
+          personal projects located on my <a
+            href="https://github.com/anbarsaleem"
+            target="_blank"
+            rel="noopener noreferrer">Github</a
+          > profile, including this here website :). The purpose of these
+          endeavors is to help further strengthen my programming arsenal as well
+          as be ways for me to spend my time in both a fun and productive manner.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    padding: 6rem 2rem 4rem;
+    background: #f8f8f8;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  h2::after {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 2px;
+    background: #00001a;
+    margin: 1rem auto 0;
+  }
+
+  .about-container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .about-content {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+  }
+
+  .photo-wrapper {
+    flex-shrink: 0;
+  }
+
+  .profile-pic {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 3px solid #00001a;
+    object-fit: cover;
+  }
+
+  .bio {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: #1e2a45;
+    font-weight: 400;
+  }
+
+  .bio p + p {
+    margin-top: 1rem;
+  }
+
+  .bio a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  @media (max-width: 640px) {
+    .about-content {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .profile-pic {
+      width: 140px;
+      height: 140px;
+    }
+  }
+</style>

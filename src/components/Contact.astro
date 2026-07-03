@@ -1,0 +1,138 @@
+---
+const socials = [
+  {
+    label: "Email",
+    href: "mailto:anbar.saleem@gmail.com",
+    icon: "M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z",
+    color: "#dd4b39",
+  },
+  {
+    label: "Github",
+    href: "https://github.com/anbarsaleem",
+    icon: "M12 2C6.477 2 2 6.477 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0012 2z",
+    color: "#333",
+  },
+  {
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/anbarsaleem/",
+    icon: "M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2zM4 2a2 2 0 110 4 2 2 0 010-4z",
+    color: "#2867B2",
+  },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/anbar_saleem",
+    icon: "M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 01-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 017.8 2m-.2 2A3.6 3.6 0 004 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 003.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5M12 7a5 5 0 110 10 5 5 0 010-10m0 2a3 3 0 100 6 3 3 0 000-6z",
+    color: "#833AB4",
+  },
+];
+---
+
+<section class="contact" id="contact">
+  <div class="contact-container">
+    <h2>Get in Touch</h2>
+    <div class="contact-links">
+      {
+        socials.map((s) => (
+          <a
+            href={s.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="contact-card"
+            style={`--hover-color: ${s.color}`}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d={s.icon} />
+            </svg>
+            <span>{s.label}</span>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    padding: 4rem 2rem 6rem;
+    background: #00001a;
+    color: #f8f8f8;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  h2::after {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 2px;
+    background: #f8f8f8;
+    margin: 1rem auto 0;
+  }
+
+  .contact-container {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.25rem 1.5rem;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    text-decoration: none;
+    color: #f8f8f8;
+    transition:
+      background 0.3s,
+      transform 0.2s;
+    min-width: 100px;
+  }
+
+  .contact-card:hover {
+    background: var(--hover-color);
+    transform: translateY(-4px);
+  }
+
+  .contact-card svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .contact-card span {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 480px) {
+    .contact-links {
+      gap: 1rem;
+    }
+    .contact-card {
+      padding: 1rem;
+      min-width: 80px;
+    }
+  }
+</style>
