@@ -1,130 +1,110 @@
 ---
+import projects from "../../public/projects.json";
 
+const LANG_COLORS: Record<string, string> = {
+  JavaScript: "#D8C84F",
+  TypeScript: "#007acc",
+  Python: "#306999",
+  Go: "#00ADD8",
+  Java: "#B07219",
+  HTML: "#E34C26",
+  CSS: "#563D7C",
+  "C++": "#f34b7d",
+  C: "#555555",
+  "C#": "#178600",
+  Swift: "#FFAC45",
+  Ruby: "#CC342D",
+  Shell: "#89e051",
+  Dockerfile: "#384d54",
+  HCL: "#844FBA",
+  Vue: "#4FC08D",
+  Nix: "#7e7eff",
+  Astro: "#ff5a03",
+  Jinja: "#a52a22",
+  Makefile: "#427819",
+  Pug: "#a86454",
+};
 ---
 
 <section class="projects" id="projects">
   <div class="projects-container">
     <h2>Programming Projects</h2>
     <p class="projects-intro">
-      Each button shows a project that is hosted on my Github profile. If you
-      have any questions about any of them, please feel free to contact me.
-      Click the buttons to toggle the projects displayed. :)
+      A selection of projects from my Github profile, sorted by most recently
+      worked on. Feel free to check them out or reach out with any questions.
     </p>
-    <div class="projects-list" id="projects-list">
-      <p class="loading">Loading projects...</p>
+    <div class="projects-grid" id="projects-grid">
+      {projects.map((repo) => {
+        return (
+          <a
+            class="project-card"
+            href={repo.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="card-body">
+              <h3 class="card-title">{repo.name}</h3>
+              <p class="card-desc">{repo.description}</p>
+            </div>
+            <div class="card-footer">
+              <div class="lang-tags-wrap">
+                <div class="lang-tags collapsed">
+                  {repo.languages.map((l: string) => (
+                    <span
+                      class="lang-tag"
+                      style={`--lang-color:${LANG_COLORS[l] || "#666"}`}
+                    >
+                      {l}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <span class="card-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        );
+      })}
     </div>
   </div>
 </section>
 
 <script>
-  const LANG_COLORS: Record<string, string> = {
-    JavaScript: "#D8C84F",
-    TypeScript: "#007acc",
-    Python: "#306999",
-    Go: "#00ADD8",
-    Java: "#B07219",
-    HTML: "#E34C26",
-    CSS: "#563D7C",
-    "C++": "#f34b7d",
-    C: "#555555",
-    "C#": "#178600",
-    Swift: "#FFAC45",
-    Ruby: "#CC342D",
-    Shell: "#89e051",
-    Dockerfile: "#384d54",
-    HCL: "#844FBA",
-    Vue: "#4FC08D",
-    Nix: "#7e7eff",
-  };
-
-  const USERNAME = "anbarsaleem";
-
-  async function loadProjects() {
-    const list = document.getElementById("projects-list")!;
-    try {
-      const res = await fetch(
-        `https://api.github.com/users/${USERNAME}/repos?type=all&sort=pushed&direction=desc&per_page=50`
-      );
-      const repos = await res.json();
-      const publicRepos = repos.filter(
-        (r: any) => !r.private && r.description
-      );
-
-      const contributorChecks = await Promise.all(
-        publicRepos.map(async (repo: any) => {
-          try {
-            const contribRes = await fetch(
-              `https://api.github.com/repos/${USERNAME}/${repo.name}/contributors?per_page=30`
-            );
-            const contribs = await contribRes.json();
-            const isContrib =
-              Array.isArray(contribs) &&
-              contribs.some(
-                (c: any) => c.login?.toLowerCase() === USERNAME
-              );
-            return isContrib ? repo : null;
-          } catch {
-            return null;
-          }
-        })
-      );
-      const filtered = contributorChecks.filter(Boolean);
-
-      list.innerHTML = "";
-
-      for (const repo of filtered) {
-        const langRes = await fetch(repo.languages_url);
-        const languages = await langRes.json();
-        const langNames = Object.keys(languages);
-
-        const wrapper = document.createElement("div");
-        wrapper.className = "project-wrapper";
-
-        const button = document.createElement("button");
-        button.className = "project-toggle";
-        button.textContent = repo.name;
-
-        const card = document.createElement("div");
-        card.className = "project-card";
-        card.innerHTML = `
-          <div class="project-content">
-            <div class="project-title">
-              <h3>${repo.name}</h3>
-              <div class="lang-tags">
-                ${langNames
-                  .map(
-                    (l: string) =>
-                      `<span class="lang-tag" style="background:${LANG_COLORS[l] || "#666"}">${l}</span>`
-                  )
-                  .join("")}
-              </div>
-            </div>
-            <p class="project-desc">${repo.description || ""}</p>
-            <div class="project-footer">
-              <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-link">
-                GITHUB
-              </a>
-            </div>
-          </div>
-        `;
-
-        button.addEventListener("click", () => {
-          const isVisible = card.classList.contains("visible");
-          card.classList.toggle("visible");
-          button.classList.toggle("active");
-          card.style.maxHeight = isVisible ? "0" : card.scrollHeight + "px";
-        });
-
-        wrapper.appendChild(button);
-        wrapper.appendChild(card);
-        list.appendChild(wrapper);
-      }
-    } catch {
-      list.innerHTML = '<p class="error">Could not load projects.</p>';
-    }
+  function visibleTagCount(container: HTMLElement): number {
+    const tags = container.querySelectorAll(".lang-tag");
+    const containerTop = container.getBoundingClientRect().top;
+    const cutoff = containerTop + container.offsetHeight;
+    let count = 0;
+    tags.forEach((tag) => {
+      if (tag.getBoundingClientRect().top < cutoff) count++;
+    });
+    return count;
   }
 
-  loadProjects();
+  document.querySelectorAll(".lang-tags").forEach((tagsContainer) => {
+    const tagsWrap = tagsContainer.parentElement!;
+    requestAnimationFrame(() => {
+      if (tagsContainer.scrollHeight > tagsContainer.offsetHeight + 2) {
+        const moreBtn = document.createElement("button");
+        moreBtn.className = "lang-more";
+        const hiddenCount =
+          tagsContainer.querySelectorAll(".lang-tag").length -
+          visibleTagCount(tagsContainer);
+        moreBtn.textContent = `+${hiddenCount}`;
+        moreBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const expanded = tagsContainer.classList.toggle("expanded");
+          tagsContainer.classList.toggle("collapsed", !expanded);
+          moreBtn.textContent = expanded ? "less" : `+${hiddenCount}`;
+        });
+        tagsWrap.appendChild(moreBtn);
+      }
+    });
+  });
 </script>
 
 <style>
@@ -150,7 +130,7 @@
   }
 
   .projects-container {
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
   }
 
@@ -158,132 +138,152 @@
     text-align: center;
     font-size: 0.85rem;
     color: #666;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
   }
 </style>
 
 <style is:global>
-  #projects-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
+  #projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
   }
 
-  #projects-list .loading,
-  #projects-list .error {
+  #projects-grid .loading,
+  #projects-grid .error {
     text-align: center;
     font-size: 0.85rem;
     color: #888;
+    grid-column: 1 / -1;
   }
 
-  #projects-list .project-wrapper {
-    width: 100%;
-    max-width: 700px;
-  }
-
-  #projects-list .project-toggle {
-    width: 100%;
-    padding: 0.75rem 1.25rem;
-    font-family: "Lato", Arial, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 400;
-    color: #1e2a45;
-    background: white;
-    border: 1px solid #618985;
-    border-radius: 4px;
-    cursor: pointer;
-    transition:
-      background 0.2s,
-      color 0.2s;
-    letter-spacing: 0.5px;
-  }
-
-  #projects-list .project-toggle:hover {
-    background: #618985;
-    color: white;
-  }
-
-  #projects-list .project-toggle.active {
-    background: #618985;
-    color: white;
-    border-radius: 4px 4px 0 0;
-  }
-
-  #projects-list .project-card {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.35s ease;
-  }
-
-  #projects-list .project-content {
-    background: white;
-    padding: 1.5rem 1.75rem;
-    border-radius: 0 0 4px 4px;
-    box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.15);
-    margin-bottom: 0.5rem;
-  }
-
-  #projects-list .project-title {
+  #projects-grid .project-card {
     display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
+    flex-direction: column;
+    min-height: 200px;
+    background: #fafafa;
+    border: 1px solid #e8e8e8;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #1e2a45;
+    transition:
+      transform 0.2s,
+      box-shadow 0.2s,
+      border-color 0.2s;
+    cursor: pointer;
   }
 
-  #projects-list .project-title h3 {
-    font-size: 1rem;
-    font-weight: 400;
+  #projects-grid .project-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    border-color: #618985;
+  }
+
+  #projects-grid .card-body {
+    flex: 1;
+  }
+
+  #projects-grid .card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.6rem;
+    color: #1e2a45;
+  }
+
+  #projects-grid .card-desc {
+    font-size: 0.8rem;
+    color: #555;
+    line-height: 1.6;
     margin: 0;
-    margin-right: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  #projects-list .lang-tags {
+  #projects-grid .card-footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    gap: 0.75rem;
+  }
+
+  #projects-grid .lang-tags-wrap {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.4rem;
+    min-width: 0;
+    flex: 1;
+  }
+
+  #projects-grid .lang-tags {
     display: flex;
     gap: 0.35rem;
     flex-wrap: wrap;
   }
 
-  #projects-list .lang-tag {
+  #projects-grid .lang-tags.collapsed {
+    max-height: 22px;
+    overflow: hidden;
+  }
+
+  #projects-grid .lang-tags.expanded {
+    max-height: none;
+  }
+
+  #projects-grid .lang-tag {
     font-size: 0.55rem;
     text-transform: uppercase;
-    color: white;
+    color: var(--lang-color);
     padding: 2px 8px;
+    border: 1px solid var(--lang-color);
     border-radius: 100px;
     font-weight: 700;
     letter-spacing: 0.5px;
+    background: transparent;
+    white-space: nowrap;
   }
 
-  #projects-list .project-desc {
-    font-size: 0.8rem;
-    color: #444;
-    line-height: 1.7;
-    margin-bottom: 1.25rem;
-    font-weight: 400;
-  }
-
-  #projects-list .project-footer {
-    display: flex;
-    margin-top: auto;
-  }
-
-  #projects-list .project-link {
-    font-size: 0.75rem;
+  #projects-grid .lang-more {
+    flex-shrink: 0;
+    font-size: 0.55rem;
     font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #1e2a45;
-    letter-spacing: 1px;
+    font-family: "Lato", Arial, sans-serif;
+    color: #618985;
+    background: none;
+    border: 1px solid #618985;
+    border-radius: 100px;
+    padding: 2px 8px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+
+  #projects-grid .lang-more:hover {
+    background: #618985;
+    color: white;
+  }
+
+  #projects-grid .card-arrow {
+    flex-shrink: 0;
+    color: #bbb;
     transition: color 0.2s;
   }
 
-  #projects-list .project-link:hover {
+  #projects-grid .project-card:hover .card-arrow {
     color: #618985;
   }
 
   @media (max-width: 640px) {
-    #projects-list .project-content {
+    #projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    #projects-grid .project-card {
       padding: 1.25rem;
     }
   }

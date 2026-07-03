@@ -1,0 +1,105 @@
+[
+  {
+    "name": "anbarsaleem.com",
+    "description": "First time I ever worked with web development and it is for my own personal portfolio/blog site.",
+    "html_url": "https://github.com/anbarsaleem/anbarsaleem.com",
+    "languages": [
+      "Astro",
+      "JavaScript"
+    ],
+    "pushed_at": "2026-07-03T19:13:44Z"
+  },
+  {
+    "name": "cv-graph",
+    "description": "Personal CV knowledge graph for resume tailoring (Obsidian vault)",
+    "html_url": "https://github.com/anbarsaleem/cv-graph",
+    "languages": [
+      "Python"
+    ],
+    "pushed_at": "2026-07-03T05:08:54Z"
+  },
+  {
+    "name": "local-llm-stack",
+    "description": "Self-hosted AI stack: Ollama + Open WebUI + SearXNG + Hermes on RTX 3090 Ti with Docker Compose",
+    "html_url": "https://github.com/anbarsaleem/local-llm-stack",
+    "languages": [
+      "Python",
+      "Dockerfile",
+      "Shell"
+    ],
+    "pushed_at": "2026-06-24T05:12:46Z"
+  },
+  {
+    "name": "project-selene",
+    "description": "Selene Lunar Colony — Infrastructure Assessment Exercise",
+    "html_url": "https://github.com/anbarsaleem/project-selene",
+    "languages": [
+      "Python",
+      "HTML",
+      "JavaScript",
+      "Dockerfile",
+      "Shell"
+    ],
+    "pushed_at": "2026-05-25T16:53:44Z"
+  },
+  {
+    "name": "homelab",
+    "description": "IaC configs for my multi-node homelab: Proxmox, Pi-hole DNS, and self-hosted services.",
+    "html_url": "https://github.com/anbarsaleem/homelab",
+    "languages": [
+      "Go",
+      "HTML",
+      "Jinja",
+      "Makefile"
+    ],
+    "pushed_at": "2026-04-24T20:33:22Z"
+  },
+  {
+    "name": "cs-450",
+    "description": "NJIT Data Visualization Class",
+    "html_url": "https://github.com/anbarsaleem/cs-450",
+    "languages": [
+      "Jupyter Notebook",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Python"
+    ],
+    "pushed_at": "2025-02-14T18:39:31Z"
+  },
+  {
+    "name": "AI-Course-Mentor-NJIT",
+    "description": "GPT-powered course advisor for NJIT students. Upload your transcript, get personalized recommendations from live catalog data.",
+    "html_url": "https://github.com/anbarsaleem/AI-Course-Mentor-NJIT",
+    "languages": [
+      "Python",
+      "Dockerfile"
+    ],
+    "pushed_at": "2024-11-06T06:08:37Z"
+  },
+  {
+    "name": "Fitbit2AppleHealth",
+    "description": "iOS app that syncs Fitbit workout data to Apple Health with a weight training dashboard.",
+    "html_url": "https://github.com/anbarsaleem/Fitbit2AppleHealth",
+    "languages": [
+      "JavaScript",
+      "Vue",
+      "CSS",
+      "TypeScript",
+      "Swift",
+      "Ruby",
+      "HTML",
+      "Pug"
+    ],
+    "pushed_at": "2023-06-19T07:14:48Z"
+  },
+  {
+    "name": "Pokemon-Saleem",
+    "description": "Text-based Pokemon battle simulator with items, a scoreboard, and strategic AI opponents.",
+    "html_url": "https://github.com/anbarsaleem/Pokemon-Saleem",
+    "languages": [
+      "Java"
+    ],
+    "pushed_at": "2019-06-04T03:28:08Z"
+  }
+]
