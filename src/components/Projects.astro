@@ -6,10 +6,11 @@
   <div class="projects-container">
     <h2>Programming Projects</h2>
     <p class="projects-intro">
-      Each card shows a public project from my Github profile. Click on a
-      project to toggle its details.
+      Each button shows a project that is hosted on my Github profile. If you
+      have any questions about any of them, please feel free to contact me.
+      Click the buttons to toggle the projects displayed. :)
     </p>
-    <div class="projects-grid" id="projects-grid">
+    <div class="projects-list" id="projects-list">
       <p class="loading">Loading projects...</p>
     </div>
   </div>
@@ -33,55 +34,71 @@
     Dockerfile: "#384d54",
     HCL: "#844FBA",
     Vue: "#4FC08D",
+    Nix: "#7e7eff",
   };
 
   async function loadProjects() {
-    const grid = document.getElementById("projects-grid")!;
+    const list = document.getElementById("projects-list")!;
     try {
       const res = await fetch(
-        "https://api.github.com/users/anbarsaleem/repos?type=all&sort=created&direction=desc&per_page=30"
+        "https://api.github.com/users/anbarsaleem/repos?type=all&sort=created&direction=asc&per_page=30"
       );
       const repos = await res.json();
       const publicRepos = repos.filter(
         (r: any) => !r.fork && !r.private && r.description
       );
 
-      grid.innerHTML = "";
+      list.innerHTML = "";
 
       for (const repo of publicRepos) {
         const langRes = await fetch(repo.languages_url);
         const languages = await langRes.json();
         const langNames = Object.keys(languages);
 
+        const wrapper = document.createElement("div");
+        wrapper.className = "project-wrapper";
+
+        const button = document.createElement("button");
+        button.className = "project-toggle";
+        button.textContent = repo.name;
+
         const card = document.createElement("div");
         card.className = "project-card";
         card.innerHTML = `
-          <div class="project-header">
-            <h3>${repo.name}</h3>
-            <div class="lang-tags">
-              ${langNames
-                .slice(0, 4)
-                .map(
-                  (l: string) =>
-                    `<span class="lang-tag" style="background:${LANG_COLORS[l] || "#666"}">${l}</span>`
-                )
-                .join("")}
+          <div class="project-content">
+            <div class="project-title">
+              <h3>${repo.name}</h3>
+              <div class="lang-tags">
+                ${langNames
+                  .map(
+                    (l: string) =>
+                      `<span class="lang-tag" style="background:${LANG_COLORS[l] || "#666"}">${l}</span>`
+                  )
+                  .join("")}
+              </div>
+            </div>
+            <p class="project-desc">${repo.description || ""}</p>
+            <div class="project-footer">
+              <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-link">
+                GITHUB
+              </a>
             </div>
           </div>
-          <p class="project-desc">${repo.description || ""}</p>
-          <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer" class="project-link">View on GitHub</a>
         `;
 
-        card
-          .querySelector(".project-header")!
-          .addEventListener("click", () => {
-            card.classList.toggle("expanded");
-          });
+        button.addEventListener("click", () => {
+          const isVisible = card.classList.contains("visible");
+          card.classList.toggle("visible");
+          button.classList.toggle("active");
+          card.style.maxHeight = isVisible ? "0" : card.scrollHeight + "px";
+        });
 
-        grid.appendChild(card);
+        wrapper.appendChild(button);
+        wrapper.appendChild(card);
+        list.appendChild(wrapper);
       }
     } catch {
-      grid.innerHTML = '<p class="error">Could not load projects.</p>';
+      list.innerHTML = '<p class="error">Could not load projects.</p>';
     }
   }
 
@@ -111,7 +128,7 @@
   }
 
   .projects-container {
-    max-width: 900px;
+    max-width: 800px;
     margin: 0 auto;
   }
 
@@ -122,9 +139,10 @@
     margin-bottom: 2rem;
   }
 
-  .projects-grid {
+  .projects-list {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 0.75rem;
   }
 
@@ -135,42 +153,76 @@
     color: #888;
   }
 
+  .project-wrapper {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .project-toggle {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    font-family: "Lato", Arial, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: #1e2a45;
+    background: white;
+    border: 1px solid #618985;
+    border-radius: 4px;
+    cursor: pointer;
+    transition:
+      background 0.2s,
+      color 0.2s;
+    letter-spacing: 0.5px;
+  }
+
+  .project-toggle:hover {
+    background: #618985;
+    color: white;
+  }
+
+  .project-toggle.active {
+    background: #618985;
+    color: white;
+    border-radius: 4px 4px 0 0;
+  }
+
   .project-card {
-    border: 1px solid #e8e8e8;
-    border-radius: 8px;
+    max-height: 0;
     overflow: hidden;
-    transition: box-shadow 0.2s;
+    transition: max-height 0.35s ease;
   }
 
-  .project-card:hover {
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  .project-content {
+    background: white;
+    padding: 1.5rem 1.75rem;
+    border-radius: 0 0 4px 4px;
+    box-shadow: 0 10px 10px 5px rgba(0, 0, 0, 0.15);
+    margin-bottom: 0.5rem;
   }
 
-  .project-header {
+  .project-title {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.25rem;
-    cursor: pointer;
     gap: 0.75rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
   }
 
-  .project-header h3 {
-    font-size: 0.95rem;
+  .project-title h3 {
+    font-size: 1rem;
     font-weight: 400;
     margin: 0;
+    margin-right: auto;
   }
 
   .lang-tags {
     display: flex;
     gap: 0.35rem;
-    flex-shrink: 0;
     flex-wrap: wrap;
-    justify-content: flex-end;
   }
 
   .lang-tag {
-    font-size: 0.6rem;
+    font-size: 0.55rem;
     text-transform: uppercase;
     color: white;
     padding: 2px 8px;
@@ -179,34 +231,36 @@
     letter-spacing: 0.5px;
   }
 
-  .project-desc,
-  .project-link {
-    display: none;
-  }
-
-  .project-card.expanded .project-desc,
-  .project-card.expanded .project-link {
-    display: block;
-  }
-
   .project-desc {
-    padding: 0 1.25rem;
     font-size: 0.8rem;
     color: #444;
-    line-height: 1.6;
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+    font-weight: 400;
+  }
+
+  .project-footer {
+    display: flex;
+    margin-top: auto;
   }
 
   .project-link {
-    padding: 0.75rem 1.25rem 1rem;
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
     text-decoration: none;
-    color: #00001a;
+    color: #1e2a45;
     letter-spacing: 1px;
+    transition: color 0.2s;
   }
 
   .project-link:hover {
-    text-decoration: underline;
+    color: #618985;
+  }
+
+  @media (max-width: 640px) {
+    .project-content {
+      padding: 1.25rem;
+    }
   }
 </style>

@@ -7,11 +7,15 @@
     <h2>About Me</h2>
     <div class="about-content">
       <div class="photo-wrapper">
-        <img
-          src="/img/anbar_new_suit_pic.png"
-          alt="Anbar Saleem"
-          class="profile-pic"
-        />
+        <div class="img-with-txt" id="img-with-txt">
+          <img
+            src="/img/anbar_new_suit_pic.png"
+            alt="Anbar Saleem"
+            class="profile-pic"
+            id="profile-pic"
+          />
+          <div class="overlay-txt" id="overlay-txt">Hi there! It's me, Anbar.</div>
+        </div>
       </div>
       <div class="bio">
         <p>
@@ -19,22 +23,38 @@
           Mario Enthusiast
         </p>
         <p>
-          I am currently a Software Engineer at AT&T and alumni from <strong
-            >New Jersey Institute of Technology's Albert Dorman Honors College</strong
-          > with a Bachelor's Degree in <strong>Computer Science</strong>.
-          Outside of my work and prior degree pursuing, I also pursue different
-          personal projects located on my <a
-            href="https://github.com/anbarsaleem"
-            target="_blank"
-            rel="noopener noreferrer">Github</a
-          > profile, including this here website :). The purpose of these
-          endeavors is to help further strengthen my programming arsenal as well
-          as be ways for me to spend my time in both a fun and productive manner.
+          I am currently a Software Engineer at <b>AT&T</b> and alumni from
+          <b>New Jersey Institute of Technology's Albert Dorman Honors College</b>
+          with a Bachelor's Degree in <b>Computer Science</b>. I am also
+          currently pursuing my <b>Master's in Computer Science at Georgia Tech</b>
+          through the OMSCS program.
+        </p>
+        <p>
+          Outside of work and school, I run a multi-node
+          <a href="https://github.com/anbarsaleem/homelab" target="_blank" rel="noopener noreferrer">homelab</a>,
+          make videos about homelabbing and developer tooling, and pursue different
+          personal projects located on my
+          <a href="https://github.com/anbarsaleem" target="_blank" rel="noopener noreferrer">Github</a>
+          profile, including this here website :). The purpose of these
+          endeavors is to help further strengthen my programming arsenal as well as
+          be ways for me to spend my time in both a fun and productive manner.
         </p>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const pic = document.getElementById("profile-pic")!;
+  const txt = document.getElementById("overlay-txt")!;
+
+  pic.addEventListener("mouseenter", () => {
+    txt.style.display = "block";
+  });
+  pic.addEventListener("mouseleave", () => {
+    txt.style.display = "none";
+  });
+</script>
 
 <style>
   .about {
@@ -73,12 +93,31 @@
     flex-shrink: 0;
   }
 
+  .img-with-txt {
+    position: relative;
+    text-align: center;
+  }
+
   .profile-pic {
     width: 180px;
     height: 180px;
-    border-radius: 50%;
+    border-radius: 50px;
     border: 3px solid #00001a;
     object-fit: cover;
+    cursor: pointer;
+  }
+
+  .overlay-txt {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    color: #00001a;
+    font-weight: 500;
+    font-size: 0.85rem;
+    pointer-events: none;
   }
 
   .bio {
@@ -86,10 +125,11 @@
     line-height: 1.7;
     color: #1e2a45;
     font-weight: 400;
+    text-align: justify;
   }
 
   .bio p + p {
-    margin-top: 1rem;
+    margin-top: 0.75rem;
   }
 
   .bio a {
@@ -100,6 +140,10 @@
   @media (max-width: 640px) {
     .about-content {
       flex-direction: column;
+      text-align: center;
+    }
+
+    .bio {
       text-align: center;
     }
 
