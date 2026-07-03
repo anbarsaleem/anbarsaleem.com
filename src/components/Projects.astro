@@ -1,5 +1,29 @@
 ---
+import projects from "../../public/projects.json";
 
+const LANG_COLORS: Record<string, string> = {
+  JavaScript: "#D8C84F",
+  TypeScript: "#007acc",
+  Python: "#306999",
+  Go: "#00ADD8",
+  Java: "#B07219",
+  HTML: "#E34C26",
+  CSS: "#563D7C",
+  "C++": "#f34b7d",
+  C: "#555555",
+  "C#": "#178600",
+  Swift: "#FFAC45",
+  Ruby: "#CC342D",
+  Shell: "#89e051",
+  Dockerfile: "#384d54",
+  HCL: "#844FBA",
+  Vue: "#4FC08D",
+  Nix: "#7e7eff",
+  Astro: "#ff5a03",
+  Jinja: "#a52a22",
+  Makefile: "#427819",
+  Pug: "#a86454",
+};
 ---
 
 <section class="projects" id="projects">
@@ -10,112 +34,77 @@
       worked on. Feel free to check them out or reach out with any questions.
     </p>
     <div class="projects-grid" id="projects-grid">
-      <p class="loading">Loading projects...</p>
+      {projects.map((repo) => {
+        return (
+          <a
+            class="project-card"
+            href={repo.html_url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <div class="card-body">
+              <h3 class="card-title">{repo.name}</h3>
+              <p class="card-desc">{repo.description}</p>
+            </div>
+            <div class="card-footer">
+              <div class="lang-tags-wrap">
+                <div class="lang-tags collapsed">
+                  {repo.languages.map((l: string) => (
+                    <span
+                      class="lang-tag"
+                      style={`--lang-color:${LANG_COLORS[l] || "#666"}`}
+                    >
+                      {l}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <span class="card-arrow">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
+              </span>
+            </div>
+          </a>
+        );
+      })}
     </div>
   </div>
 </section>
 
 <script>
-  const LANG_COLORS: Record<string, string> = {
-    JavaScript: "#D8C84F",
-    TypeScript: "#007acc",
-    Python: "#306999",
-    Go: "#00ADD8",
-    Java: "#B07219",
-    HTML: "#E34C26",
-    CSS: "#563D7C",
-    "C++": "#f34b7d",
-    C: "#555555",
-    "C#": "#178600",
-    Swift: "#FFAC45",
-    Ruby: "#CC342D",
-    Shell: "#89e051",
-    Dockerfile: "#384d54",
-    HCL: "#844FBA",
-    Vue: "#4FC08D",
-    Nix: "#7e7eff",
-    Astro: "#ff5a03",
-    Jinja: "#a52a22",
-    Makefile: "#427819",
-    Pug: "#a86454",
-  };
-
-  const USERNAME = "anbarsaleem";
-
-  async function loadProjects() {
-    const grid = document.getElementById("projects-grid")!;
-    try {
-      const res = await fetch(
-        `https://api.github.com/users/${USERNAME}/repos?type=all&sort=pushed&direction=desc&per_page=50`
-      );
-      const repos = await res.json();
-      const publicRepos = repos.filter(
-        (r: any) => !r.private && r.description
-      );
-
-      const contributorChecks = await Promise.all(
-        publicRepos.map(async (repo: any) => {
-          try {
-            const contribRes = await fetch(
-              `https://api.github.com/repos/${USERNAME}/${repo.name}/contributors?per_page=30`
-            );
-            const contribs = await contribRes.json();
-            const isContrib =
-              Array.isArray(contribs) &&
-              contribs.some(
-                (c: any) => c.login?.toLowerCase() === USERNAME
-              );
-            return isContrib ? repo : null;
-          } catch {
-            return null;
-          }
-        })
-      );
-      const filtered = contributorChecks.filter(Boolean);
-
-      grid.innerHTML = "";
-
-      for (const repo of filtered) {
-        const langRes = await fetch(repo.languages_url);
-        const languages = await langRes.json();
-        const langNames = Object.keys(languages);
-
-        const card = document.createElement("a");
-        card.className = "project-card";
-        card.href = repo.html_url;
-        card.target = "_blank";
-        card.rel = "noopener noreferrer";
-
-        card.innerHTML = `
-          <div class="card-body">
-            <h3 class="card-title">${repo.name}</h3>
-            <p class="card-desc">${repo.description || ""}</p>
-          </div>
-          <div class="card-footer">
-            <div class="lang-tags">
-              ${langNames
-                .map(
-                  (l: string) =>
-                    `<span class="lang-tag" style="--lang-color:${LANG_COLORS[l] || "#666"}">${l}</span>`
-                )
-                .join("")}
-            </div>
-            <span class="card-arrow">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 17L17 7M17 7H7M17 7v10"/>
-              </svg>
-            </span>
-          </div>
-        `;
-
-        grid.appendChild(card);
-      }
-    } catch {
-      grid.innerHTML = '<p class="error">Could not load projects.</p>';
-    }
+  function visibleTagCount(container: HTMLElement): number {
+    const tags = container.querySelectorAll(".lang-tag");
+    const containerTop = container.getBoundingClientRect().top;
+    const cutoff = containerTop + container.offsetHeight;
+    let count = 0;
+    tags.forEach((tag) => {
+      if (tag.getBoundingClientRect().top < cutoff) count++;
+    });
+    return count;
   }
 
-  loadProjects();
+  document.querySelectorAll(".lang-tags").forEach((tagsContainer) => {
+    const tagsWrap = tagsContainer.parentElement!;
+    requestAnimationFrame(() => {
+      if (tagsContainer.scrollHeight > tagsContainer.offsetHeight + 2) {
+        const moreBtn = document.createElement("button");
+        moreBtn.className = "lang-more";
+        const hiddenCount =
+          tagsContainer.querySelectorAll(".lang-tag").length -
+          visibleTagCount(tagsContainer);
+        moreBtn.textContent = `+${hiddenCount}`;
+        moreBtn.addEventListener("click", (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const expanded = tagsContainer.classList.toggle("expanded");
+          tagsContainer.classList.toggle("collapsed", !expanded);
+          moreBtn.textContent = expanded ? "less" : `+${hiddenCount}`;
+        });
+        tagsWrap.appendChild(moreBtn);
+      }
+    });
+  });
 </script>
 
 <style>
@@ -171,6 +160,7 @@
   #projects-grid .project-card {
     display: flex;
     flex-direction: column;
+    min-height: 200px;
     background: #fafafa;
     border: 1px solid #e8e8e8;
     border-radius: 12px;
@@ -206,20 +196,42 @@
     color: #555;
     line-height: 1.6;
     margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   #projects-grid .card-footer {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    margin-top: 1.25rem;
+    margin-top: auto;
+    padding-top: 0.75rem;
     gap: 0.75rem;
+  }
+
+  #projects-grid .lang-tags-wrap {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.4rem;
+    min-width: 0;
+    flex: 1;
   }
 
   #projects-grid .lang-tags {
     display: flex;
     gap: 0.35rem;
     flex-wrap: wrap;
+  }
+
+  #projects-grid .lang-tags.collapsed {
+    max-height: 22px;
+    overflow: hidden;
+  }
+
+  #projects-grid .lang-tags.expanded {
+    max-height: none;
   }
 
   #projects-grid .lang-tag {
@@ -232,6 +244,28 @@
     font-weight: 700;
     letter-spacing: 0.5px;
     background: transparent;
+    white-space: nowrap;
+  }
+
+  #projects-grid .lang-more {
+    flex-shrink: 0;
+    font-size: 0.55rem;
+    font-weight: 700;
+    font-family: "Lato", Arial, sans-serif;
+    color: #618985;
+    background: none;
+    border: 1px solid #618985;
+    border-radius: 100px;
+    padding: 2px 8px;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+
+  #projects-grid .lang-more:hover {
+    background: #618985;
+    color: white;
   }
 
   #projects-grid .card-arrow {

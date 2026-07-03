@@ -3,3 +3,5 @@ dist/
 .astro/
 .vercel/
 .DS_Store
+OpenCode.md
+.opencode/

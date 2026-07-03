@@ -105,6 +105,7 @@
     border: 3px solid #00001a;
     object-fit: cover;
     cursor: pointer;
+    transition: opacity 0.3s;
   }
 
   .overlay-txt {
@@ -118,6 +119,10 @@
     font-weight: 500;
     font-size: 0.85rem;
     pointer-events: none;
+  }
+
+  .img-with-txt:hover .profile-pic {
+    opacity: 0.6;
   }
 
   .bio {
