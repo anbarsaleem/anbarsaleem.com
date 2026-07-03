@@ -171,11 +171,15 @@
         d3
           .forceLink<GraphNode, any>(data.edges)
           .id((d) => d.id)
-          .distance(80)
+          .distance(55)
       )
-      .force("charge", d3.forceManyBody().strength(-120))
+      .force("charge", d3.forceManyBody().strength(-70))
       .force("center", d3.forceCenter(width / 2, height / 2))
-      .force("collision", d3.forceCollide().radius(12));
+      .force("collision", d3.forceCollide().radius(10))
+      .force(
+        "radial",
+        d3.forceRadial(Math.min(width, height) * 0.35, width / 2, height / 2).strength(0.05)
+      );
 
     const links = g
       .append("g")
@@ -232,26 +236,48 @@
           })
       );
 
+    const labelNodes = data.nodes.filter(
+      (d) =>
+        d.type === "role" ||
+        d.type === "education" ||
+        (d.connectionCount || 0) >= 15
+    );
+
     const labels = g
       .append("g")
       .selectAll<SVGTextElement, GraphNode>("text")
-      .data(
-        data.nodes.filter(
-          (d) => (d.connectionCount || 0) >= 5 || d.type !== "skill"
-        )
-      )
+      .data(labelNodes)
       .join("text")
       .text((d) => d.label)
-      .attr("font-size", (d) => (d.type === "skill" ? "8px" : "9px"))
+      .attr("font-size", (d) => (d.type === "skill" ? "7px" : "8px"))
       .attr("font-family", "Lato, Arial, sans-serif")
       .attr("fill", "#333")
       .attr("text-anchor", "middle")
-      .attr("dy", (d) => -(nodeRadius(d) + 4))
+      .attr("dy", (d) => -(nodeRadius(d) + 3))
       .attr("pointer-events", "none");
+
+    const hoverLabel = g
+      .append("text")
+      .attr("font-size", "9px")
+      .attr("font-family", "Lato, Arial, sans-serif")
+      .attr("font-weight", "700")
+      .attr("fill", "#00001a")
+      .attr("text-anchor", "middle")
+      .attr("pointer-events", "none")
+      .style("display", "none");
 
     // --- Hover interactions ---
     nodes.on("mouseover", function (event, d) {
       d3.select(this).attr("stroke", "#00001a").attr("stroke-width", 2.5);
+
+      const hasLabel = labelNodes.some((n) => n.id === d.id);
+      if (!hasLabel) {
+        hoverLabel
+          .text(d.label)
+          .attr("x", d.x!)
+          .attr("y", d.y! - nodeRadius(d) - 5)
+          .style("display", null);
+      }
 
       const connected = new Set<string>();
       data.edges.forEach((e) => {
@@ -325,6 +351,7 @@
 
     nodes.on("mouseout", function () {
       d3.select(this).attr("stroke", "#fff").attr("stroke-width", 1.5);
+      hoverLabel.style("display", "none");
       applyFilters();
       tooltipEl.style.display = "none";
     });

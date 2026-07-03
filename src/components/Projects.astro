@@ -41,7 +41,7 @@
     const list = document.getElementById("projects-list")!;
     try {
       const res = await fetch(
-        "https://api.github.com/users/anbarsaleem/repos?type=all&sort=created&direction=asc&per_page=30"
+        "https://api.github.com/users/anbarsaleem/repos?type=all&sort=pushed&direction=desc&per_page=30"
       );
       const repos = await res.json();
       const publicRepos = repos.filter(
@@ -138,27 +138,29 @@
     color: #666;
     margin-bottom: 2rem;
   }
+</style>
 
-  .projects-list {
+<style is:global>
+  #projects-list {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
   }
 
-  .loading,
-  .error {
+  #projects-list .loading,
+  #projects-list .error {
     text-align: center;
     font-size: 0.85rem;
     color: #888;
   }
 
-  .project-wrapper {
+  #projects-list .project-wrapper {
     width: 100%;
     max-width: 700px;
   }
 
-  .project-toggle {
+  #projects-list .project-toggle {
     width: 100%;
     padding: 0.75rem 1.25rem;
     font-family: "Lato", Arial, sans-serif;
@@ -175,24 +177,24 @@
     letter-spacing: 0.5px;
   }
 
-  .project-toggle:hover {
+  #projects-list .project-toggle:hover {
     background: #618985;
     color: white;
   }
 
-  .project-toggle.active {
+  #projects-list .project-toggle.active {
     background: #618985;
     color: white;
     border-radius: 4px 4px 0 0;
   }
 
-  .project-card {
+  #projects-list .project-card {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.35s ease;
   }
 
-  .project-content {
+  #projects-list .project-content {
     background: white;
     padding: 1.5rem 1.75rem;
     border-radius: 0 0 4px 4px;
@@ -200,7 +202,7 @@
     margin-bottom: 0.5rem;
   }
 
-  .project-title {
+  #projects-list .project-title {
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -208,20 +210,20 @@
     flex-wrap: wrap;
   }
 
-  .project-title h3 {
+  #projects-list .project-title h3 {
     font-size: 1rem;
     font-weight: 400;
     margin: 0;
     margin-right: auto;
   }
 
-  .lang-tags {
+  #projects-list .lang-tags {
     display: flex;
     gap: 0.35rem;
     flex-wrap: wrap;
   }
 
-  .lang-tag {
+  #projects-list .lang-tag {
     font-size: 0.55rem;
     text-transform: uppercase;
     color: white;
@@ -231,7 +233,7 @@
     letter-spacing: 0.5px;
   }
 
-  .project-desc {
+  #projects-list .project-desc {
     font-size: 0.8rem;
     color: #444;
     line-height: 1.7;
@@ -239,12 +241,12 @@
     font-weight: 400;
   }
 
-  .project-footer {
+  #projects-list .project-footer {
     display: flex;
     margin-top: auto;
   }
 
-  .project-link {
+  #projects-list .project-link {
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -254,12 +256,12 @@
     transition: color 0.2s;
   }
 
-  .project-link:hover {
+  #projects-list .project-link:hover {
     color: #618985;
   }
 
   @media (max-width: 640px) {
-    .project-content {
+    #projects-list .project-content {
       padding: 1.25rem;
     }
   }
