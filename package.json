@@ -11,5 +11,8 @@
     "@astrojs/vercel": "^11.0.2",
     "astro": "^7.0.6",
     "d3": "^7.9.0"
+  },
+  "overrides": {
+    "path-to-regexp": "6.3.0"
   }
 }
