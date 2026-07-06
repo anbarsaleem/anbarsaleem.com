@@ -22,18 +22,10 @@
       </div>
       <div class="filters" id="graph-filters">
         <span class="filter-label">Filter by experience:</span>
-        <button class="filter-btn active" data-filter="professional">
-          <i class="filter-dot professional"></i>Professional
-        </button>
-        <button class="filter-btn active" data-filter="internship">
-          <i class="filter-dot internship"></i>Internship
-        </button>
-        <button class="filter-btn active" data-filter="academic">
-          <i class="filter-dot academic"></i>Academic
-        </button>
-        <button class="filter-btn active" data-filter="personal">
-          <i class="filter-dot personal"></i>Personal
-        </button>
+        <button class="filter-btn active" data-filter="professional">Professional</button>
+        <button class="filter-btn active" data-filter="internship">Internship</button>
+        <button class="filter-btn active" data-filter="academic">Academic</button>
+        <button class="filter-btn active" data-filter="personal">Personal</button>
       </div>
     </div>
     <div class="graph-wrapper" id="graph-wrapper">
@@ -84,10 +76,10 @@
   };
 
   const EXP_COLORS: Record<string, string> = {
-    professional: "#2563EB",
-    internship: "#D97706",
-    academic: "#7C3AED",
-    personal: "#059669",
+    professional: "#0D9488",
+    internship: "#E11D48",
+    academic: "#CA8A04",
+    personal: "#64748B",
   };
 
   const EXP_LABELS: Record<string, string> = {
@@ -666,31 +658,6 @@
     background: #f5f5f5;
   }
 
-  .filter-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    opacity: 0.4;
-    transition: opacity 0.2s;
-  }
-
-  .filter-btn.active .filter-dot {
-    opacity: 1;
-  }
-
-  .filter-dot.professional {
-    background: #2563eb;
-  }
-  .filter-dot.internship {
-    background: #d97706;
-  }
-  .filter-dot.academic {
-    background: #7c3aed;
-  }
-  .filter-dot.personal {
-    background: #059669;
-  }
 
   .graph-wrapper {
     border: 1px solid #e0e0e0;
