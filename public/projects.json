@@ -1,5 +1,16 @@
 [
   {
+    "name": "homepage-ai-dashboard",
+    "description": "A dark, self-hosted Homepage dashboard template with search bars, service widgets, and a built-in Ask AI panel that streams answers from a local LLM.",
+    "html_url": "https://github.com/anbarsaleem/homepage-ai-dashboard",
+    "languages": [
+      "JavaScript",
+      "CSS",
+      "Shell"
+    ],
+    "pushed_at": "2026-07-08T05:04:33Z"
+  },
+  {
     "name": "anbarsaleem.com",
     "description": "First time I ever worked with web development and it is for my own personal portfolio/blog site.",
     "html_url": "https://github.com/anbarsaleem/anbarsaleem.com",
